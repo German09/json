@@ -1,0 +1,61 @@
+{
+  "_from": "vanilla-jsoneditor",
+  "_id": "vanilla-jsoneditor@0.6.2",
+  "_inBundle": false,
+  "_integrity": "sha512-icg6P1EjmQEkWsC5GUaPVU1Uf7mWifaYDJL1xCSZcGbok+Uj8VGkYo06N/pK6GgDwkB7xR97mT8F/1FlwK5F4A==",
+  "_location": "/vanilla-jsoneditor",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "vanilla-jsoneditor",
+    "name": "vanilla-jsoneditor",
+    "escapedName": "vanilla-jsoneditor",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/vanilla-jsoneditor/-/vanilla-jsoneditor-0.6.2.tgz",
+  "_shasum": "56d643df317eb7d59af52ebc6ff3a591cea03f08",
+  "_spec": "vanilla-jsoneditor",
+  "_where": "C:\\Program Files\\nodejs\\node_modules\\npm",
+  "bugs": {
+    "url": "https://github.com/josdejong/svelte-jsoneditor/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A web-based tool to view, edit, format, transform, and validate JSON",
+  "devDependencies": {},
+  "exports": {
+    ".": "./index.js",
+    "./CHANGELOG.md": "./CHANGELOG.md",
+    "./index.d.ts": "./index.d.ts",
+    "./index.js": "./index.js",
+    "./index.js.map": "./index.js.map",
+    "./LICENSE.md": "./LICENSE.md",
+    "./README.md": "./README.md",
+    "./SECURITY.md": "./SECURITY.md",
+    "./themes/jse-theme-dark.css": "./themes/jse-theme-dark.css",
+    "./themes/jse-theme-default.css": "./themes/jse-theme-default.css",
+    "./package.json": "./package.json"
+  },
+  "homepage": "https://github.com/josdejong/svelte-jsoneditor#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "module": "index.js",
+  "name": "vanilla-jsoneditor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josdejong/svelte-jsoneditor.git"
+  },
+  "scripts": {},
+  "svelte": "index.js",
+  "type": "module",
+  "types": "index.d.ts",
+  "version": "0.6.2"
+}
