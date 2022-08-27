@@ -2,8 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-
-    <title>JSONEditor | Basic usage</title>
     <style>
       #jsoneditor {
         width: 100%;
@@ -14,14 +12,14 @@
         position: relative;
         display: flex;
         flex-direction: row;
+        --jse-theme-color: #383e42;
+        --jse-theme-color-highlight: #687177;
       }
     </style> 
   </head>
   <body>
-    <p>
-      <button id="setContent">Set! content</button>
-      <button id="getContent">Get content</button>
-    </p>
+    <div  id="setContent" text></div>
+    <div  id="getContent" text></div>
     <div id="jsoneditor"></div>
 
     <script type="module">
@@ -31,31 +29,28 @@
       const editor = new JSONEditor({
         target: document.getElementById('jsoneditor')
       })
+      setEditor()
 
       // set json
       document.getElementById('setContent').onclick = function () {
-        const content = {
-          text: undefined, // used in text mode
-          json: {
-            array: [1, 2, 3],
-            boolean: true,
-            color: '#82b92c',
-            null: null,
-            number: 123,
-            object: { a: 'b', c: 'd' },
-            time: 1575599819000,
-            string: 'Hello World'
-          }
-        }
-
-        editor.set(content)
+        setEditor()
       }
 
       // get json
       document.getElementById('getContent').onclick = function () {
         const content = editor.get()
-        alert(JSON.stringify(content, null, 2))
+        const text = JSON.stringify(content, null, 2)
+        document.getElementById('getContent').setAttribute('text',text)
       }
+
+      function setEditor() {
+        const content = {
+          text: document.getElementById('setContent').getAttribute('text'), 
+          json: undefined
+        }
+        editor.set(content)
+      }
+
     </script>
   </body>
 </html>
