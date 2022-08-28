@@ -30,7 +30,15 @@
 
       // create the editor
       const editor = new JSONEditor({
-        target: document.getElementById('jsoneditor')
+        target: document.getElementById('jsoneditor'),
+        props: {
+          onChange: (updatedContent, previousContent, { contentErrors, patchResult }) => {
+            // content is an object { json: JSONData } | { text: string }
+            //console.log('onChange', { updatedContent, previousContent, contentErrors, patchResult })
+            const text = JSON.stringify(updatedContent, null, 2)
+            sendEvent('onChange', text)
+          }
+        }  
       })
       setEditor()
 
@@ -52,6 +60,12 @@
           json: undefined
         }
         editor.set(content)
+      }
+
+      function sendEvent(eventName, eventParams) {
+          let newEvent = new MouseEvent('click')
+          newEvent.eventData = { event: eventName, params: eventParams }
+          return dispatchEvent(newEvent)
       }
 
     </script>
