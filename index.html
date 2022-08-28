@@ -35,7 +35,7 @@
           onChange: (updatedContent, previousContent, { contentErrors, patchResult }) => {
             // content is an object { json: JSONData } | { text: string }
             //console.log('onChange', { updatedContent, previousContent, contentErrors, patchResult })
-            const text = JSON.stringify(updatedContent, null, 2)
+            const text    = getText(updatedContent)
             sendEvent('onChange', text)
           }
         }  
@@ -50,8 +50,16 @@
       // get json
       document.getElementById('getContent').onclick = function () {
         const content = editor.get()
-        const text = JSON.stringify(content, null, 2)
+        const text    = getText(content)
         document.getElementById('getContent').setAttribute('text',text)
+      }
+
+      function getText(content){
+        if (content.json === undefined){
+          return content.text
+        }else{
+          return JSON.stringify(content.json, null, 2)
+        }   
       }
 
       function setEditor() {
