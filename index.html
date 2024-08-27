@@ -23,10 +23,11 @@
   <body>
     <div  id="setContent" text></div>
     <div  id="getContent" text></div>
-    <div id="jsoneditor"></div>
+    <div  id="updateProps" text></div>
+    <div  id="jsoneditor"></div>
 
     <script type="module">
-      import { JSONEditor } from './index.js'
+      import { JSONEditor } from './standalone.js'
 
       // create the editor
       const editor = new JSONEditor({
@@ -74,6 +75,11 @@
           let newEvent = new MouseEvent('click')
           newEvent.eventData = { event: eventName, params: eventParams }
           return dispatchEvent(newEvent)
+      }
+
+      // updateProps json
+      document.getElementById('updateProps').onclick = function () {
+        editor.updateProps(JSON.parse(document.getElementById('updateProps').getAttribute('text')))
       }
 
     </script>
