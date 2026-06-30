@@ -26,6 +26,74 @@
     <div  id="updateProps" text></div>
     <div  id="jsoneditor"></div>
 
+    <script>
+      if (typeof globalThis === 'undefined') {
+        Object.defineProperty(Object.prototype, '__globalThis__', {
+          get: function () {
+            return this
+          },
+          configurable: true
+        })
+        __globalThis__.globalThis = __globalThis__
+        delete Object.prototype.__globalThis__
+      }
+
+      if (typeof queueMicrotask === 'undefined') {
+        globalThis.queueMicrotask = function (callback) {
+          Promise.resolve()
+            .then(callback)
+            .catch(function (error) {
+              setTimeout(function () {
+                throw error
+              }, 0)
+            })
+        }
+      }
+
+      if (typeof String.prototype.replaceAll === 'undefined') {
+        String.prototype.replaceAll = function (searchValue, replaceValue) {
+          if (searchValue instanceof RegExp) {
+            if (!searchValue.global) {
+              throw new TypeError('String.prototype.replaceAll called with a non-global RegExp argument')
+            }
+            return this.replace(searchValue, replaceValue)
+          }
+
+          return this.split(searchValue).join(replaceValue)
+        }
+      }
+    </script>
+
+    <script>
+      ;(function () {
+        var supportsWhere = false
+
+        try {
+          supportsWhere = Boolean(
+            globalThis.CSS &&
+              globalThis.CSS.supports &&
+              globalThis.CSS.supports('selector(:where(*))')
+          )
+        } catch (error) {
+          supportsWhere = false
+        }
+
+        if (!supportsWhere) {
+          document.write('<link rel="stylesheet" href="./vendor/jsoneditor-legacy.css">')
+        }
+      })()
+    </script>
+    <script src="./vendor/css-vars-ponyfill.min.js"></script>
+    <script>
+      if (typeof cssVars === 'function') {
+        cssVars({
+          onlyLegacy: true,
+          updateURLs: false,
+          watch: true
+        })
+      }
+    </script>
+
     <script type="module">
       import { JSONEditor } from './standalone.js'
 
@@ -41,6 +109,14 @@
           }
         }  
       })
+      if (typeof globalThis.cssVars === 'function') {
+        setTimeout(function () {
+          globalThis.cssVars({
+            onlyLegacy: true,
+            updateURLs: false
+          })
+        }, 0)
+      }
       setEditor()
 
       // set json

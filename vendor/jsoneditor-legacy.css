@@ -1,0 +1,3903 @@
+.jse-absolute-popup.svelte-enkkpn {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  z-index: 1001;
+}
+.jse-absolute-popup.svelte-enkkpn .jse-hidden-input.svelte-enkkpn {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  overflow: hidden;
+}
+.jse-absolute-popup.svelte-enkkpn .jse-absolute-popup-content.svelte-enkkpn {
+  position: absolute;
+}
+
+
+  .fa-icon.svelte-v67cny {
+    display: inline-block;
+    fill: currentColor;
+  }
+  .fa-flip-horizontal.svelte-v67cny {
+    transform: scale(-1, 1);
+  }
+  .fa-flip-vertical.svelte-v67cny {
+    transform: scale(1, -1);
+  }
+  .fa-spin.svelte-v67cny {
+    animation: svelte-v67cny-fa-spin 1s 0s infinite linear;
+  }
+  .fa-inverse.svelte-v67cny {
+    color: #fff;
+  }
+  .fa-pulse.svelte-v67cny {
+    animation: svelte-v67cny-fa-spin 1s infinite steps(8);
+  }
+  @keyframes svelte-v67cny-fa-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-boolean-toggle.svelte-eli4ob {
+  padding: 0;
+  margin: 1px 0 0;
+  vertical-align: top;
+  display: inline-flex;
+  color: var(--jse-value-color-boolean, #ff8c00);
+}
+
+.jse-boolean-toggle.svelte-eli4ob:not(.jse-readonly) {
+  cursor: pointer;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-color-picker-popup.svelte-v77py2 .picker_wrapper.popup,
+.jse-color-picker-popup.svelte-v77py2 .picker_wrapper.popup .picker_arrow::before,
+.jse-color-picker-popup.svelte-v77py2 .picker_wrapper.popup .picker_arrow::after {
+  background: var(--jse-color-picker-background, var(--jse-panel-background, #ebebeb));
+  line-height: normal;
+}
+.jse-color-picker-popup.svelte-v77py2 .picker_slider,
+.jse-color-picker-popup.svelte-v77py2 .picker_sl,
+.jse-color-picker-popup.svelte-v77py2 .picker_editor input,
+.jse-color-picker-popup.svelte-v77py2 .picker_sample,
+.jse-color-picker-popup.svelte-v77py2 .picker_done button {
+  box-shadow: var(--jse-color-picker-border-box-shadow, #cbcbcb 0 0 0 1px);
+}
+.jse-color-picker-popup.svelte-v77py2 .picker_editor input {
+  background: var(--jse-background-color, #fff);
+  color: var(--jse-text-color, #4d4d4d);
+}
+.jse-color-picker-popup.svelte-v77py2 .picker_done button {
+  background: var(--jse-button-background, #e0e0e0);
+  color: var(--jse-button-color, var(--jse-text-color, #4d4d4d));
+}
+.jse-color-picker-popup.svelte-v77py2 .picker_done button:hover {
+  background: var(--jse-button-background-highlight, #e7e7e7);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-color-picker-button.svelte-13mgyo6 {
+  font-size: var(--jse-font-size-mono, 14px);
+  width: var(--jse-color-picker-button-size, 1em);
+  height: var(--jse-color-picker-button-size, 1em);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 2px 0 0 calc(0.5 * var(--jse-padding, 10px));
+  display: inline-flex;
+  vertical-align: top;
+  border: 1px solid var(--jse-text-color, #4d4d4d);
+  border-radius: 2px;
+  background: inherit;
+  outline: none;
+}
+
+.jse-color-picker-button.svelte-13mgyo6:not(.jse-readonly) {
+  cursor: pointer;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-value.jse-string.svelte-1r0oryi {
+  color: var(--jse-value-color-string, #008000);
+}
+.jse-value.jse-object.svelte-1r0oryi, .jse-value.jse-array.svelte-1r0oryi {
+  min-width: 16px;
+  color: var(--jse-delimiter-color, rgba(0, 0, 0, 0.38));
+}
+.jse-value.jse-number.svelte-1r0oryi {
+  color: var(--jse-value-color-number, #ee422e);
+}
+.jse-value.jse-boolean.svelte-1r0oryi {
+  color: var(--jse-value-color-boolean, #ff8c00);
+}
+.jse-value.jse-null.svelte-1r0oryi {
+  color: var(--jse-value-color-null, #004ed0);
+}
+.jse-value.jse-invalid.svelte-1r0oryi {
+  color: var(--jse-text-color, #4d4d4d);
+}
+.jse-value.jse-url.svelte-1r0oryi {
+  color: var(--jse-value-color-url, #008000);
+  text-decoration: underline;
+}
+
+div.jse-editable-div.svelte-1r0oryi {
+  min-width: 2em;
+  padding: 0 5px;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 1px;
+  vertical-align: top;
+  cursor: text !important;
+  word-break: normal;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+div.jse-editable-div.jse-short-text.svelte-1r0oryi {
+  overflow-wrap: normal;
+}
+div.jse-editable-div.jse-table-cell.svelte-1r0oryi {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+div.jse-editable-div[contenteditable=true].svelte-1r0oryi {
+  outline: var(--jse-edit-outline, 2px solid #656565);
+  background: var(--jse-background-color, #fff);
+  position: relative;
+  display: inline-block;
+  border-radius: 0;
+  z-index: 3;
+}
+div.jse-editable-div.jse-empty.svelte-1r0oryi:not(:focus) {
+  outline: 1px dotted var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+  -moz-outline-radius: 2px;
+}
+div.jse-editable-div.jse-empty.svelte-1r0oryi::after {
+  pointer-events: none;
+  color: var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-highlight.svelte-19qyvy6 {
+  background-color: var(--jse-search-match-color, #ffe665);
+  outline: var(--jse-search-match-outline, none);
+}
+.jse-highlight.jse-active.svelte-19qyvy6 {
+  background-color: var(--jse-search-match-active-color, var(--jse-search-match-color, #ffe665));
+  outline: var(--jse-search-match-outline, 2px solid #e0be00);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-tag.svelte-ubve9r {
+  border: none;
+  font-size: 80%;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  color: var(--jse-tag-color, var(--jse-text-color-inverse, #fff));
+  background: var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 4px;
+  line-height: normal;
+  margin: 1px 0;
+}
+.jse-tag.svelte-ubve9r:hover {
+  opacity: 0.8;
+}
+.jse-tag.disabled.svelte-ubve9r {
+  opacity: 0.7;
+  cursor: inherit;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-value.jse-string.svelte-1saqp8c {
+  color: var(--jse-value-color-string, #008000);
+}
+.jse-value.jse-object.svelte-1saqp8c, .jse-value.jse-array.svelte-1saqp8c {
+  min-width: 16px;
+  color: var(--jse-delimiter-color, rgba(0, 0, 0, 0.38));
+}
+.jse-value.jse-number.svelte-1saqp8c {
+  color: var(--jse-value-color-number, #ee422e);
+}
+.jse-value.jse-boolean.svelte-1saqp8c {
+  color: var(--jse-value-color-boolean, #ff8c00);
+}
+.jse-value.jse-null.svelte-1saqp8c {
+  color: var(--jse-value-color-null, #004ed0);
+}
+.jse-value.jse-invalid.svelte-1saqp8c {
+  color: var(--jse-text-color, #4d4d4d);
+}
+.jse-value.jse-url.svelte-1saqp8c {
+  color: var(--jse-value-color-url, #008000);
+  text-decoration: underline;
+}
+
+.jse-value.svelte-1saqp8c {
+  display: inline-block;
+  min-width: 2em;
+  padding: 0 5px;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 1px;
+  vertical-align: top;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.jse-value.jse-table-cell.svelte-1saqp8c {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+.jse-value.jse-empty.svelte-1saqp8c {
+  min-width: 4em;
+  outline: 1px dotted var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+  -moz-outline-radius: 2px;
+}
+.jse-value.jse-empty.svelte-1saqp8c::after {
+  pointer-events: none;
+  color: var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+  content: "value";
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-tooltip.svelte-brt1mq {
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  line-height: normal;
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px);
+  border-radius: 3px;
+  background: var(--jse-context-menu-background, #656565);
+  color: var(--jse-context-menu-color, var(--jse-text-color-inverse, #fff));
+  white-space: nowrap;
+  box-shadow: var(--jse-controls-box-shadow, 0 2px 6px 0 rgba(0, 0, 0, 0.24));
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-timestamp.svelte-1jcpman {
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  display: inline-flex;
+  color: var(--jse-value-color-number, #ee422e);
+}
+
+
+  svg.svelte-1kxu7be {
+      width: var(--chevron-icon-width, 20px);
+      height: var(--chevron-icon-width, 20px);
+      color: var(--chevron-icon-colour, currentColor);
+  }
+
+
+
+    svg.svelte-1hraxrc {
+        width: var(--clear-icon-width, 20px);
+        height: var(--clear-icon-width, 20px);
+        color: var(--clear-icon-color, currentColor);
+    }
+
+
+
+    .loading.svelte-y9fi5p {
+        width: var(--spinner-width, 20px);
+        height: var(--spinner-height, 20px);
+        color: var(--spinner-color, var(--icons-color));
+        animation: svelte-y9fi5p-rotate 0.75s linear infinite;
+        transform-origin: center center;
+        transform: none;
+    }
+
+    .circle_path.svelte-y9fi5p {
+        stroke-dasharray: 90;
+        stroke-linecap: round;
+    }
+
+    @keyframes svelte-y9fi5p-rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+
+
+    .svelte-select.svelte-1ul7oo4 {
+        /* deprecating camelCase custom props in favour of kebab-case for v5 */
+        --borderRadius: var(--border-radius);
+        --clearSelectColor: var(--clear-select-color);
+        --clearSelectWidth: var(--clear-select-width);
+        --disabledBackground: var(--disabled-background);
+        --disabledBorderColor: var(--disabled-border-color);
+        --disabledColor: var(--disabled-color);
+        --disabledPlaceholderColor: var(--disabled-placeholder-color);
+        --disabledPlaceholderOpacity: var(--disabled-placeholder-opacity);
+        --errorBackground: var(--error-background);
+        --errorBorder: var(--error-border);
+        --groupItemPaddingLeft: var(--group-item-padding-left);
+        --groupTitleColor: var(--group-title-color);
+        --groupTitleFontSize: var(--group-title-font-size);
+        --groupTitleFontWeight: var(--group-title-font-weight);
+        --groupTitlePadding: var(--group-title-padding);
+        --groupTitleTextTransform: var(--group-title-text-transform);
+        --groupTitleBorderColor: var(--group-title-border-color);
+        --groupTitleBorderWidth: var(--group-title-border-width);
+        --groupTitleBorderStyle: var(--group-title-border-style);
+        --indicatorColor: var(--chevron-color);
+        --indicatorHeight: var(--chevron-height);
+        --indicatorWidth: var(--chevron-width);
+        --inputColor: var(--input-color);
+        --inputLeft: var(--input-left);
+        --inputLetterSpacing: var(--input-letter-spacing);
+        --inputMargin: var(--input-margin);
+        --inputPadding: var(--input-padding);
+        --itemActiveBackground: var(--item-active-background);
+        --itemColor: var(--item-color);
+        --itemFirstBorderRadius: var(--item-first-border-radius);
+        --itemHoverBG: var(--item-hover-bg);
+        --itemHoverColor: var(--item-hover-color);
+        --itemIsActiveBG: var(--item-is-active-bg);
+        --itemIsActiveColor: var(--item-is-active-color);
+        --itemIsNotSelectableColor: var(--item-is-not-selectable-color);
+        --itemPadding: var(--item-padding);
+        --listBackground: var(--list-background);
+        --listBorder: var(--list-border);
+        --listBorderRadius: var(--list-border-radius);
+        --listEmptyColor: var(--list-empty-color);
+        --listEmptyPadding: var(--list-empty-padding);
+        --listEmptyTextAlign: var(--list-empty-text-align);
+        --listMaxHeight: var(--list-max-height);
+        --listPosition: var(--list-position);
+        --listShadow: var(--list-shadow);
+        --listZIndex: var(--list-z-index);
+        --multiItemBG: var(--multi-item-bg);
+        --multiItemBorderRadius: var(--multi-item-border-radius);
+        --multiItemDisabledHoverBg: var(--multi-item-disabled-hover-bg);
+        --multiItemDisabledHoverColor: var(--multi-item-disabled-hover-color);
+        --multiItemHeight: var(--multi-item-height);
+        --multiItemMargin: var(--multi-item-margin);
+        --multiItemPadding: var(--multi-item-padding);
+        --multiSelectInputMargin: var(--multi-select-input-margin);
+        --multiSelectInputPadding: var(--multi-select-input-padding);
+        --multiSelectPadding: var(--multi-select-padding);
+        --placeholderColor: var(--placeholder-color);
+        --placeholderOpacity: var(--placeholder-opacity);
+        --selectedItemPadding: var(--selected-item-padding);
+        --spinnerColor: var(--spinner-color);
+        --spinnerHeight: var(--spinner-height);
+        --spinnerWidth: var(--spinner-width);
+
+        --internal-padding: 0 0 0 16px;
+
+        border: var(--border, 1px solid #d8dbdf);
+        border-radius: var(--border-radius, 6px);
+        min-height: var(--height, 42px);
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        padding: var(--padding, var(--internal-padding));
+        background: var(--background, #fff);
+        margin: var(--margin, 0);
+        width: var(--width, 100%);
+        font-size: var(--font-size, 16px);
+        max-height: var(--max-height);
+    }
+
+    .svelte-1ul7oo4 {
+        box-sizing: var(--box-sizing, border-box);
+    }
+
+    .svelte-select.svelte-1ul7oo4:hover {
+        border: var(--border-hover, 1px solid #b2b8bf);
+    }
+
+    .value-container.svelte-1ul7oo4 {
+        display: flex;
+        flex: 1 1 0%;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px 10px;
+        padding: var(--value-container-padding, 5px 0);
+        position: relative;
+        overflow: var(--value-container-overflow, hidden);
+        align-self: stretch;
+    }
+
+    .prepend.svelte-1ul7oo4,
+    .indicators.svelte-1ul7oo4 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+    }
+
+    .indicators.svelte-1ul7oo4 {
+        position: var(--indicators-position);
+        top: var(--indicators-top);
+        right: var(--indicators-right);
+        bottom: var(--indicators-bottom);
+    }
+
+    input.svelte-1ul7oo4 {
+        position: absolute;
+        cursor: default;
+        border: none;
+        color: var(--input-color, var(--item-color));
+        padding: var(--input-padding, 0);
+        letter-spacing: var(--input-letter-spacing, inherit);
+        margin: var(--input-margin, 0);
+        min-width: 10px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: transparent;
+        font-size: var(--font-size, 16px);
+    }
+
+    .svelte-1ul7oo4:not(.multi) > .value-container.svelte-1ul7oo4 > input.svelte-1ul7oo4 {
+        width: 100%;
+        height: 100%;
+    }
+
+    input.svelte-1ul7oo4::placeholder {
+        color: var(--placeholder-color, #78848f);
+        opacity: var(--placeholder-opacity, 1);
+    }
+
+    input.svelte-1ul7oo4:focus {
+        outline: none;
+    }
+
+    .svelte-select.focused.svelte-1ul7oo4 {
+        border: var(--border-focused, 1px solid #006fe8);
+        border-radius: var(--border-radius-focused, var(--border-radius, 6px));
+    }
+
+    .disabled.svelte-1ul7oo4 {
+        background: var(--disabled-background, #ebedef);
+        border-color: var(--disabled-border-color, #ebedef);
+        color: var(--disabled-color, #c1c6cc);
+    }
+
+    .disabled.svelte-1ul7oo4 input.svelte-1ul7oo4::placeholder {
+        color: var(--disabled-placeholder-color, #c1c6cc);
+        opacity: var(--disabled-placeholder-opacity, 1);
+    }
+
+    .selected-item.svelte-1ul7oo4 {
+        position: relative;
+        overflow: var(--selected-item-overflow, hidden);
+        padding: var(--selected-item-padding, 0 20px 0 0);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--selected-item-color, inherit);
+        font-size: var(--font-size, 16px);
+    }
+
+    .multi.svelte-1ul7oo4 .selected-item.svelte-1ul7oo4 {
+        position: absolute;
+        line-height: var(--height, 42px);
+        height: var(--height, 42px);
+    }
+
+    .selected-item.svelte-1ul7oo4:focus {
+        outline: none;
+    }
+
+    .hide-selected-item.svelte-1ul7oo4 {
+        opacity: 0;
+    }
+
+    .icon.svelte-1ul7oo4 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .clear-select.svelte-1ul7oo4 {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--clear-select-width, 40px);
+        height: var(--clear-select-height, 100%);
+        color: var(--clear-select-color, var(--icons-color));
+        margin: var(--clear-select-margin, 0);
+        pointer-events: all;
+        flex-shrink: 0;
+    }
+
+    .clear-select.svelte-1ul7oo4:focus {
+        outline: var(--clear-select-focus-outline, 1px solid #006fe8);
+    }
+
+    .loading.svelte-1ul7oo4 {
+        width: var(--loading-width, 40px);
+        height: var(--loading-height);
+        color: var(--loading-color, var(--icons-color));
+        margin: var(--loading--margin, 0);
+        flex-shrink: 0;
+    }
+
+    .chevron.svelte-1ul7oo4 {
+        width: var(--chevron-width, 40px);
+        height: var(--chevron-height, 40px);
+        background: var(--chevron-background, transparent);
+        pointer-events: var(--chevron-pointer-events, none);
+        color: var(--chevron-color, var(--icons-color));
+        border: var(--chevron-border, 0 0 0 1px solid #d8dbdf);
+        flex-shrink: 0;
+    }
+
+    .multi.svelte-1ul7oo4 {
+        padding: var(--multi-select-padding, var(--internal-padding));
+    }
+
+    .multi.svelte-1ul7oo4 input.svelte-1ul7oo4 {
+        padding: var(--multi-select-input-padding, 0);
+        position: relative;
+        margin: var(--multi-select-input-margin, 5px 0);
+        flex: 1 1 40px;
+    }
+
+    .svelte-select.error.svelte-1ul7oo4 {
+        border: var(--error-border, 1px solid #ff2d55);
+        background: var(--error-background, #fff);
+    }
+
+    .a11y-text.svelte-1ul7oo4 {
+        z-index: 9999;
+        border: 0px;
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        width: 1px;
+        position: absolute;
+        overflow: hidden;
+        padding: 0px;
+        white-space: nowrap;
+    }
+
+    .multi-item.svelte-1ul7oo4 {
+        background: var(--multi-item-bg, #ebedef);
+        margin: var(--multi-item-margin, 0);
+        outline: var(--multi-item-outline, 1px solid #ddd);
+        border-radius: var(--multi-item-border-radius, 4px);
+        height: var(--multi-item-height, 25px);
+        line-height: var(--multi-item-height, 25px);
+        display: flex;
+        cursor: default;
+        padding: var(--multi-item-padding, 0 5px);
+        overflow: hidden;
+        gap: var(--multi-item-gap, 4px);
+        outline-offset: -1px;
+        max-width: var(--multi-max-width, none);
+        color: var(--multi-item-color, var(--item-color));
+    }
+
+    .multi-item.disabled.svelte-1ul7oo4:hover {
+        background: var(--multi-item-disabled-hover-bg, #ebedef);
+        color: var(--multi-item-disabled-hover-color, #c1c6cc);
+    }
+
+    .multi-item-text.svelte-1ul7oo4 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .multi-item-clear.svelte-1ul7oo4 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        --clear-icon-color: var(--multi-item-clear-icon-color, #000);
+    }
+
+    .multi-item.active.svelte-1ul7oo4 {
+        outline: var(--multi-item-active-outline, 1px solid #006fe8);
+    }
+
+    .svelte-select-list.svelte-1ul7oo4 {
+        box-shadow: var(--list-shadow, 0 2px 3px 0 rgba(44, 62, 80, 0.24));
+        border-radius: var(--list-border-radius, 4px);
+        max-height: var(--list-max-height, 252px);
+        overflow-y: auto;
+        background: var(--list-background, #fff);
+        position: var(--list-position, absolute);
+        z-index: var(--list-z-index, 2);
+        border: var(--list-border);
+    }
+
+    .prefloat.svelte-1ul7oo4 {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .list-group-title.svelte-1ul7oo4 {
+        color: var(--group-title-color, #8f8f8f);
+        cursor: default;
+        font-size: var(--group-title-font-size, 16px);
+        font-weight: var(--group-title-font-weight, 600);
+        height: var(--height, 42px);
+        line-height: var(--height, 42px);
+        padding: var(--group-title-padding, 0 20px);
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-transform: var(--group-title-text-transform, uppercase);
+        border-width: var(--group-title-border-width, medium);
+        border-style: var(--group-title-border-style, none);
+        border-color: var(--group-title-border-color, color);
+    }
+
+    .empty.svelte-1ul7oo4 {
+        text-align: var(--list-empty-text-align, center);
+        padding: var(--list-empty-padding, 20px 0);
+        color: var(--list-empty-color, #78848f);
+    }
+
+    .item.svelte-1ul7oo4 {
+        cursor: default;
+        height: var(--item-height, var(--height, 42px));
+        line-height: var(--item-line-height, var(--height, 42px));
+        padding: var(--item-padding, 0 20px);
+        color: var(--item-color, inherit);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: var(--item-transition, all 0.2s);
+        align-items: center;
+        width: 100%;
+    }
+
+    .item.group-item.svelte-1ul7oo4 {
+        padding-left: var(--group-item-padding-left, 40px);
+    }
+
+    .item.svelte-1ul7oo4:active {
+        background: var(--item-active-background, #b9daff);
+    }
+
+    .item.active.svelte-1ul7oo4 {
+        background: var(--item-is-active-bg, #007aff);
+        color: var(--item-is-active-color, #fff);
+    }
+
+    .item.first.svelte-1ul7oo4 {
+        border-radius: var(--item-first-border-radius, 4px 4px 0 0);
+    }
+
+    .item.hover.svelte-1ul7oo4:not(.active) {
+        background: var(--item-hover-bg, #e7f2ff);
+        color: var(--item-hover-color, inherit);
+    }
+
+    .item.not-selectable.svelte-1ul7oo4,
+    .item.hover.item.not-selectable.svelte-1ul7oo4,
+    .item.active.item.not-selectable.svelte-1ul7oo4,
+    .item.not-selectable.svelte-1ul7oo4:active {
+        color: var(--item-is-not-selectable-color, #999);
+        background: transparent;
+    }
+
+    .required.svelte-1ul7oo4 {
+        opacity: 0;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+table.jse-transform-wizard.svelte-9wqi8y {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+table.jse-transform-wizard.svelte-9wqi8y input.svelte-9wqi8y {
+  font-family: inherit;
+  font-size: inherit;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y th.svelte-9wqi8y {
+  font-weight: normal;
+  text-align: left;
+  width: 60px;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: calc(0.5 * var(--jse-padding, 10px));
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select .multi-item {
+  align-items: center;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select .value-container {
+  gap: 0 !important;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select.jse-filter-path {
+  flex: 4;
+  margin-right: calc(0.5 * var(--jse-padding, 10px));
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select.jse-filter-relation {
+  flex: 1.5;
+  margin-right: calc(0.5 * var(--jse-padding, 10px));
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select.jse-sort-path {
+  flex: 3;
+  margin-right: calc(0.5 * var(--jse-padding, 10px));
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select.jse-sort-direction {
+  flex: 1;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select.jse-projection-paths {
+  flex: 1;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .svelte-select input {
+  box-sizing: border-box;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .jse-filter-value.svelte-9wqi8y {
+  flex: 4;
+  padding: 4px 8px;
+  border: var(--jse-input-border, 1px solid #d8dbdf);
+  border-radius: var(--jse-input-radius, 3px);
+  outline: none;
+  background: var(--jse-input-background, var(--jse-background-color, #fff));
+  color: inherit;
+}
+table.jse-transform-wizard.svelte-9wqi8y tr.svelte-9wqi8y td.svelte-9wqi8y .jse-horizontal.svelte-9wqi8y .jse-filter-value.svelte-9wqi8y:focus {
+  border: var(--jse-input-border-focus, 1px solid var(--jse-input-border-focus, var(--jse-theme-color, #3883fa)));
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-select-query-language.svelte-jrd4q2 {
+  position: relative;
+  width: 32px;
+}
+.jse-select-query-language.svelte-jrd4q2 .jse-select-query-language-container.svelte-jrd4q2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--jse-controls-box-shadow, 0 2px 6px 0 rgba(0, 0, 0, 0.24));
+}
+.jse-select-query-language.svelte-jrd4q2 .jse-select-query-language-container.svelte-jrd4q2 .jse-query-language.svelte-jrd4q2 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  text-align: left;
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  white-space: nowrap;
+  color: var(--jse-context-menu-color, var(--jse-text-color-inverse, #fff));
+  background: var(--jse-context-menu-background, #656565);
+}
+.jse-select-query-language.svelte-jrd4q2 .jse-select-query-language-container.svelte-jrd4q2 .jse-query-language.svelte-jrd4q2:hover {
+  background: var(--jse-context-menu-background-highlight, #7a7a7a);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-header.svelte-1k211ye {
+  display: flex;
+  background: var(--jse-theme-color, #3883fa);
+  color: var(--jse-menu-color, var(--jse-text-color-inverse, #fff));
+}
+.jse-header.svelte-1k211ye .jse-title.svelte-1k211ye {
+  flex: 1;
+  padding: 5px;
+  vertical-align: middle;
+}
+.jse-header.svelte-1k211ye button.svelte-1k211ye {
+  border: none;
+  background: transparent;
+  min-width: 32px;
+  color: inherit;
+  cursor: pointer;
+}
+.jse-header.svelte-1k211ye button.svelte-1k211ye:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-config.svelte-5gkegr {
+  border: none;
+  background: transparent;
+  min-width: 32px;
+  color: inherit;
+  cursor: pointer;
+}
+.jse-config.svelte-5gkegr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.jse-config.hide.svelte-5gkegr {
+  display: none;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-message.svelte-cbvd26 {
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  padding: var(--jse-padding, 10px);
+  display: flex;
+  gap: var(--jse-padding, 10px);
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.jse-message.jse-success.svelte-cbvd26 {
+  background: var(--message-success-background, #9ac45d);
+  color: var(--jse-message-success-color, #fff);
+}
+.jse-message.svelte-cbvd26 .jse-text.svelte-cbvd26 {
+  display: flex;
+  flex: 1;
+  min-width: 60%;
+  align-items: center;
+}
+.jse-message.svelte-cbvd26 .jse-text.jse-clickable.svelte-cbvd26 {
+  cursor: pointer;
+}
+.jse-message.svelte-cbvd26 .jse-text.jse-clickable.svelte-cbvd26:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.jse-message.jse-error.svelte-cbvd26 {
+  background: var(--jse-message-error-background, var(--jse-error-color, #ee5341));
+  color: var(--jse-message-error-color, #fff);
+}
+.jse-message.jse-warning.svelte-cbvd26 {
+  background: var(--jse-message-warning-background, #ffde5c);
+  color: var(--jse-message-warning-color, #4d4d4d);
+}
+.jse-message.jse-info.svelte-cbvd26 {
+  background: var(--jse-message-info-background, #4f91ff);
+  color: var(--jse-message-info-color, #fff);
+}
+.jse-message.svelte-cbvd26 .jse-actions.svelte-cbvd26 {
+  display: flex;
+  gap: var(--jse-padding, 10px);
+}
+.jse-message.svelte-cbvd26 .jse-actions.svelte-cbvd26 button.jse-action.svelte-cbvd26 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-message-action-background, rgba(255, 255, 255, 0.2));
+  color: inherit;
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px);
+}
+.jse-message.svelte-cbvd26 .jse-actions.svelte-cbvd26 button.jse-action.svelte-cbvd26:hover {
+  background: var(--jse-message-action-background-highlight, rgba(255, 255, 255, 0.3));
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-validation-errors-overview.svelte-1342rh4 {
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  overflow: auto;
+  max-height: 25%;
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 {
+  border-collapse: collapse;
+  width: 100%;
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4 {
+  cursor: pointer;
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.jse-validation-error.svelte-1342rh4 {
+  background: var(--jse-message-error-background, var(--jse-error-color, #ee5341));
+  color: var(--jse-message-error-color, #fff);
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.jse-validation-warning.svelte-1342rh4 {
+  background: var(--jse-message-warning-background, #ffde5c);
+  color: var(--jse-message-warning-color, #4d4d4d);
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.jse-validation-warning.svelte-1342rh4:hover {
+  filter: brightness(105%);
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.jse-validation-info.svelte-1342rh4 {
+  background: var(--jse-message-info-background, #4f91ff);
+  color: var(--jse-message-info-color, #fff);
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4:hover {
+  filter: brightness(110%);
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4 td.svelte-1342rh4 {
+  padding: 4px var(--jse-padding, 10px);
+  vertical-align: middle;
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4 td.jse-validation-error-icon.svelte-1342rh4 {
+  width: 36px;
+  box-sizing: border-box;
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4 td.jse-validation-error-action.svelte-1342rh4 {
+  width: 36px;
+  box-sizing: border-box;
+  padding: 0;
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4 td.jse-validation-error-action.svelte-1342rh4 button.jse-validation-errors-collapse.svelte-1342rh4 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  width: 36px;
+  height: 26px;
+  cursor: pointer;
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4 td.jse-validation-error-action.svelte-1342rh4 button.jse-validation-errors-collapse.svelte-1342rh4:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.jse-validation-errors-overview.svelte-1342rh4 table.svelte-1342rh4 tr.svelte-1342rh4 td.svelte-1342rh4 div.jse-validation-errors-expand.svelte-1342rh4 {
+  display: inline-block;
+  position: relative;
+  top: 3px;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+dialog.jse-modal.svelte-2aoco4 {
+  border-radius: 3px;
+  font-size: var(--jse-padding, 10px);
+  border: none;
+  padding: 0;
+  display: flex;
+  min-width: 0;
+  margin: auto;
+  overflow: visible;
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+}
+dialog.jse-modal.jse-sort-modal.svelte-2aoco4 {
+  width: 400px;
+}
+dialog.jse-modal.jse-repair-modal.svelte-2aoco4 {
+  width: 600px;
+  height: 500px;
+}
+dialog.jse-modal.jse-jsoneditor-modal.svelte-2aoco4 {
+  width: 800px;
+  height: 600px;
+}
+dialog.jse-modal.jse-transform-modal.svelte-2aoco4 {
+  width: 1200px;
+  height: 800px;
+}
+dialog.jse-modal.jse-fullscreen.svelte-2aoco4 {
+  width: 100%;
+  height: 100%;
+}
+dialog.jse-modal.svelte-2aoco4::backdrop {
+  background: var(--jse-overlay-background, rgba(0, 0, 0, 0.3));
+}
+dialog.jse-modal[open].svelte-2aoco4 {
+  animation: svelte-2aoco4-zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+dialog.jse-modal[open].svelte-2aoco4::backdrop {
+  animation: svelte-2aoco4-fade 0.2s ease-out;
+}
+dialog.jse-modal.svelte-2aoco4 .jse-modal-inner.svelte-2aoco4 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  line-height: normal;
+  background: var(--jse-modal-background, #f5f5f5);
+  color: var(--jse-text-color, #4d4d4d);
+}
+@keyframes svelte-2aoco4-zoom {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes svelte-2aoco4-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+dialog.jse-modal.svelte-2aoco4 .svelte-select {
+  --border: var(--jse-svelte-select-border, 1px solid #d8dbdf);
+  --item-is-active-bg: var(--jse-item-is-active-bg, #3883fa);
+  --border-radius: var(--jse-svelte-select-border-radius, 3px);
+  --background: var(--jse-svelte-select-background, #fff);
+  --padding: var(--jse-svelte-select-padding, 0 10px);
+  --multi-select-padding: var(--jse-svelte-select-multi-select-padding, 0 10px);
+  --font-size: var(--jse-svelte-select-font-size, var(--jse-font-size, 16px));
+  --height: 36px;
+  --multi-item-height: 28px;
+  --multi-item-margin: 2px;
+  --multi-item-padding: 2px 8px;
+  --multi-item-border-radius: 6px;
+  --indicator-top: 8px;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-modal-contents.svelte-10a6ob6 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+}
+.jse-modal-contents.svelte-10a6ob6 .jse-actions.svelte-10a6ob6 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: var(--jse-padding, 10px);
+}
+.jse-modal-contents.svelte-10a6ob6 .jse-actions.svelte-10a6ob6 button.jse-primary.svelte-10a6ob6 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-button-primary-background, var(--jse-theme-color, #3883fa));
+  color: var(--jse-button-primary-color, #fff);
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  border-radius: 3px;
+}
+.jse-modal-contents.svelte-10a6ob6 .jse-actions.svelte-10a6ob6 button.jse-primary.svelte-10a6ob6:hover {
+  background: var(--jse-button-primary-background-highlight, var(--jse-theme-color-highlight, #5f9dff));
+}
+.jse-modal-contents.svelte-10a6ob6 .jse-actions.svelte-10a6ob6 button.jse-primary.svelte-10a6ob6:disabled {
+  background: var(--jse-button-primary-background-disabled, #9d9d9d);
+}
+
+.jse-shortcuts.svelte-10a6ob6 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: calc(2 * var(--jse-padding, 10px)) 0;
+}
+.jse-shortcuts.svelte-10a6ob6 .jse-shortcut.svelte-10a6ob6 .jse-key.svelte-10a6ob6 {
+  font-size: 200%;
+  color: var(--jse-theme-color, #3883fa);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-menu.svelte-3erbu0 {
+  background: var(--jse-theme-color, #3883fa);
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size-main-menu, 14px);
+  color: var(--jse-menu-color, var(--jse-text-color-inverse, #fff));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  position: relative;
+}
+.jse-menu.svelte-3erbu0 .jse-button.svelte-3erbu0 {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.5em;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  width: var(--jse-menu-button-size, 32px);
+  height: var(--jse-menu-button-size, 32px);
+  padding: calc(0.5 * var(--jse-padding, 10px));
+  margin: 0;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.jse-menu.svelte-3erbu0 .jse-button.svelte-3erbu0:hover, .jse-menu.svelte-3erbu0 .jse-button.svelte-3erbu0:focus {
+  background: var(--jse-theme-color-highlight, #5f9dff);
+}
+.jse-menu.svelte-3erbu0 .jse-button.svelte-3erbu0:disabled {
+  color: var(--jse-menu-color, var(--jse-text-color-inverse, #fff));
+  opacity: 0.5;
+  background: transparent;
+}
+.jse-menu.svelte-3erbu0 .jse-button.jse-group-button.svelte-3erbu0 {
+  width: auto;
+  height: calc(var(--jse-menu-button-size, 32px) - var(--jse-padding, 10px));
+  margin: calc(0.5 * var(--jse-padding, 10px)) 0;
+  padding: 0 calc(0.5 * var(--jse-padding, 10px)) 1px;
+  border: 1px solid var(--jse-menu-color, var(--jse-text-color-inverse, #fff));
+}
+.jse-menu.svelte-3erbu0 .jse-button.jse-group-button.svelte-3erbu0:not(.jse-last) {
+  border-right: none;
+}
+.jse-menu.svelte-3erbu0 .jse-button.jse-group-button.jse-first.svelte-3erbu0 {
+  margin-left: calc(0.5 * var(--jse-padding, 10px));
+}
+.jse-menu.svelte-3erbu0 .jse-button.jse-group-button.jse-last.svelte-3erbu0 {
+  margin-right: calc(0.5 * var(--jse-padding, 10px));
+}
+.jse-menu.svelte-3erbu0 .jse-button.jse-group-button.svelte-3erbu0:hover, .jse-menu.svelte-3erbu0 .jse-button.jse-group-button.svelte-3erbu0:focus {
+  background: var(--jse-theme-color-highlight, #5f9dff);
+}
+.jse-menu.svelte-3erbu0 .jse-button.jse-group-button.jse-selected.svelte-3erbu0 {
+  background: var(--jse-menu-color, var(--jse-text-color-inverse, #fff));
+  color: var(--jse-theme-color, #3883fa);
+}
+.jse-menu.svelte-3erbu0 .jse-space.svelte-3erbu0 {
+  flex: 1;
+}
+.jse-menu.svelte-3erbu0 .jse-separator.svelte-3erbu0 {
+  background: var(--jse-menu-color, var(--jse-text-color-inverse, #fff));
+  opacity: 0.3;
+  width: 1px;
+  margin: 3px;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-json-repair-component.svelte-16jv58j {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--jse-background-color, #fff);
+  color: var(--jse-text-color, #4d4d4d);
+}
+.jse-json-repair-component.svelte-16jv58j .jse-info.svelte-16jv58j {
+  padding: calc(0.5 * var(--jse-padding, 10px));
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  vertical-align: center;
+}
+.jse-json-repair-component.svelte-16jv58j .jse-json-text.svelte-16jv58j {
+  flex: 1;
+  border: none;
+  padding: 2px;
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  background: var(--jse-input-background, var(--jse-background-color, #fff));
+  color: var(--jse-text-color, #4d4d4d);
+  resize: none;
+  outline: none;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+div.jse-collapsed-items.svelte-1v6dhm4 {
+  margin-left: calc(var(--level) * var(--jse-indent-size, calc(1em + 4px)));
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  color: var(--jse-collapsed-items-link-color, rgba(0, 0, 0, 0.38));
+  padding: calc(0.5 * var(--jse-padding, 10px));
+  border: 8px solid transparent;
+  border-width: 8px 0;
+  background-color: var(--jse-contents-background-color, transparent);
+  background-image: linear-gradient(var(--jse-collapsed-items-background-color, #f5f5f5), var(--jse-collapsed-items-background-color, #f5f5f5)), linear-gradient(to bottom right, transparent 50.5%, var(--jse-collapsed-items-background-color, #f5f5f5) 50.5%), linear-gradient(to bottom left, transparent 50.5%, var(--jse-collapsed-items-background-color, #f5f5f5) 50.5%), linear-gradient(to top right, transparent 50.5%, var(--jse-collapsed-items-background-color, #f5f5f5) 50.5%), linear-gradient(to top left, transparent 50.5%, var(--jse-collapsed-items-background-color, #f5f5f5) 50.5%);
+  background-repeat: repeat, repeat-x, repeat-x, repeat-x, repeat-x;
+  background-position: 0 0, 8px 0, 8px 0, 8px 100%, 8px 100%;
+  background-size: auto auto, 16px 16px, 16px 16px, 16px 16px, 16px 16px;
+  background-clip: padding-box, border-box, border-box, border-box, border-box;
+  background-origin: padding-box, border-box, border-box, border-box, border-box;
+  display: flex;
+}
+div.jse-collapsed-items.jse-selected.svelte-1v6dhm4 {
+  background-color: var(--jse-selection-background-color, #d3d3d3);
+  --jse-collapsed-items-background-color: var(--jse-collapsed-items-selected-background-color, #c2c2c2);
+}
+div.jse-collapsed-items.svelte-1v6dhm4 div.jse-text.svelte-1v6dhm4,
+div.jse-collapsed-items.svelte-1v6dhm4 button.jse-expand-items.svelte-1v6dhm4 {
+  margin: 0 calc(0.5 * var(--jse-padding, 10px));
+}
+div.jse-collapsed-items.svelte-1v6dhm4 div.jse-text.svelte-1v6dhm4 {
+  display: inline;
+}
+div.jse-collapsed-items.svelte-1v6dhm4 button.jse-expand-items.svelte-1v6dhm4 {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--jse-collapsed-items-link-color, rgba(0, 0, 0, 0.38));
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+div.jse-collapsed-items.svelte-1v6dhm4 button.jse-expand-items.svelte-1v6dhm4:hover, div.jse-collapsed-items.svelte-1v6dhm4 button.jse-expand-items.svelte-1v6dhm4:focus {
+  color: var(--jse-collapsed-items-link-color-highlight, #ee5341);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-context-menu-pointer.svelte-10ijtzr {
+  position: absolute;
+  top: calc(-0.5 * var(--jse-context-menu-pointer-size, calc(1em + 4px)));
+  right: calc(-0.5 * var(--jse-context-menu-pointer-size, calc(1em + 4px)));
+  width: var(--jse-context-menu-pointer-size, calc(1em + 4px));
+  height: var(--jse-context-menu-pointer-size, calc(1em + 4px));
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 2px;
+  background: var(--jse-context-menu-pointer-hover-background, #b2b2b2);
+  color: var(--jse-context-menu-pointer-color, var(--jse-context-menu-color, var(--jse-text-color-inverse, #fff)));
+  border: none;
+  box-shadow: var(--jse-controls-box-shadow, 0 2px 6px 0 rgba(0, 0, 0, 0.24));
+}
+.jse-context-menu-pointer.jse-root.svelte-10ijtzr {
+  top: 0;
+  right: calc(-2px - var(--jse-context-menu-pointer-size, calc(1em + 4px)));
+}
+.jse-context-menu-pointer.jse-insert.svelte-10ijtzr {
+  right: -1px;
+}
+.jse-context-menu-pointer.svelte-10ijtzr:hover {
+  background: var(--jse-context-menu-pointer-background-highlight, var(--jse-context-menu-background-highlight, #7a7a7a));
+}
+.jse-context-menu-pointer.jse-selected.svelte-10ijtzr {
+  background: var(--jse-context-menu-pointer-background, var(--jse-context-menu-background, #656565));
+}
+.jse-context-menu-pointer.jse-selected.svelte-10ijtzr:hover {
+  background: var(--jse-context-menu-pointer-background-highlight, var(--jse-context-menu-background-highlight, #7a7a7a));
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-key.svelte-1n4cez4 {
+  display: inline-block;
+  min-width: 2em;
+  padding: 0 5px;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 1px;
+  vertical-align: top;
+  color: var(--jse-key-color, #1a1a1a);
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: pre-wrap;
+}
+.jse-key.jse-empty.svelte-1n4cez4 {
+  min-width: 3em;
+  outline: 1px dotted var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+  -moz-outline-radius: 2px;
+}
+.jse-key.jse-empty.svelte-1n4cez4::after {
+  pointer-events: none;
+  color: var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+  content: "key";
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+button.jse-validation-error.svelte-q6a061 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+  display: inline-flex;
+  color: var(--jse-error-color, #ee5341);
+}
+
+button.jse-validation-info.svelte-q6a061 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+  display: inline-flex;
+  color: var(--jse-info-color, #4f91ff);
+}
+
+button.jse-validation-warning.svelte-q6a061 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+  display: inline-flex;
+  color: var(--jse-warning-color, #fdc539);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-expand.svelte-1qi6rc1 {
+  width: var(--jse-indent-size, calc(1em + 4px));
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--jse-delimiter-color, rgba(0, 0, 0, 0.38));
+  font-size: var(--jse-font-size-mono, 14px);
+  height: var(--jse-line-height, calc(1em + 4px));
+}
+.jse-expand.svelte-1qi6rc1:hover {
+  opacity: 0.8;
+}
+
+.jse-meta.svelte-1qi6rc1,
+.jse-separator.svelte-1qi6rc1,
+.jse-index.svelte-1qi6rc1,
+.jse-bracket.svelte-1qi6rc1 {
+  vertical-align: top;
+  color: var(--jse-delimiter-color, rgba(0, 0, 0, 0.38));
+}
+
+.jse-index.svelte-1qi6rc1 {
+  padding: 0 calc(0.5 * var(--jse-padding, 10px));
+}
+
+.jse-bracket.svelte-1qi6rc1 {
+  padding: 0 2px;
+}
+.jse-bracket.jse-expanded.svelte-1qi6rc1 {
+  padding-right: var(--jse-padding, 10px);
+}
+
+.jse-identifier.svelte-1qi6rc1 {
+  vertical-align: top;
+  position: relative;
+}
+
+.jse-json-node.svelte-1qi6rc1 {
+  position: relative;
+  color: var(--jse-text-color, #4d4d4d);
+}
+.jse-json-node.jse-root.svelte-1qi6rc1 {
+  min-height: 100%;
+  padding-bottom: 2px;
+  box-sizing: border-box;
+}
+.jse-json-node.jse-root.svelte-1qi6rc1 > .jse-contents-outer.svelte-1qi6rc1 > .jse-contents.svelte-1qi6rc1 {
+  padding-left: 0;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-props.svelte-1qi6rc1,
+.jse-json-node.svelte-1qi6rc1 .jse-items.svelte-1qi6rc1 {
+  position: relative;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-header-outer.svelte-1qi6rc1,
+.jse-json-node.svelte-1qi6rc1 .jse-footer-outer.svelte-1qi6rc1 {
+  display: flex;
+  margin-left: calc(var(--level) * var(--jse-indent-size, calc(1em + 4px)));
+}
+.jse-json-node.svelte-1qi6rc1 .jse-header.svelte-1qi6rc1 {
+  position: relative;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-header.svelte-1qi6rc1 .jse-meta.svelte-1qi6rc1 > .jse-meta-inner.svelte-1qi6rc1 {
+  display: flex;
+  justify-content: center;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-contents-outer.svelte-1qi6rc1 {
+  display: flex;
+  margin-left: calc(var(--level) * var(--jse-indent-size, calc(1em + 4px)));
+}
+.jse-json-node.svelte-1qi6rc1 .jse-header.svelte-1qi6rc1,
+.jse-json-node.svelte-1qi6rc1 .jse-contents.svelte-1qi6rc1 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-contents.svelte-1qi6rc1 {
+  padding-left: var(--jse-indent-size, calc(1em + 4px));
+  cursor: var(--jse-contents-cursor, pointer);
+}
+.jse-json-node.svelte-1qi6rc1 .jse-contents.svelte-1qi6rc1 .jse-value-outer.svelte-1qi6rc1 {
+  display: inline-flex;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-footer.svelte-1qi6rc1 {
+  display: inline-flex;
+  padding-left: calc(var(--jse-indent-size, calc(1em + 4px)) + 5px);
+}
+.jse-json-node.svelte-1qi6rc1 .jse-header.svelte-1qi6rc1,
+.jse-json-node.svelte-1qi6rc1 .jse-contents.svelte-1qi6rc1,
+.jse-json-node.svelte-1qi6rc1 .jse-footer.svelte-1qi6rc1 {
+  background: var(--jse-contents-background-color, transparent);
+}
+.jse-json-node.svelte-1qi6rc1 .jse-insert-selection-area.svelte-1qi6rc1 {
+  padding: 0 calc(0.5 * var(--jse-padding, 10px));
+  flex: 1;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-insert-selection-area.jse-inside.svelte-1qi6rc1 {
+  display: inline-flex;
+  align-items: center;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-insert-selection-area.jse-after.svelte-1qi6rc1 {
+  display: flex;
+  align-items: flex-end;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-context-menu-pointer-anchor.svelte-1qi6rc1 {
+  position: relative;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-insert-area.svelte-1qi6rc1 {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  margin-left: calc(var(--level) * var(--jse-indent-size, calc(1em + 4px)));
+  max-width: 250px;
+  min-width: 100px;
+  height: 0;
+  margin-right: calc(0.5 * var(--jse-padding, 10px));
+  outline: 1px solid;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-insert-area.jse-hovered.svelte-1qi6rc1 {
+  outline-color: var(--jse-context-menu-pointer-hover-background, #b2b2b2);
+}
+.jse-json-node.svelte-1qi6rc1 .jse-key-outer.svelte-1qi6rc1 {
+  position: relative;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-key-outer.svelte-1qi6rc1:hover,
+.jse-json-node.svelte-1qi6rc1 .jse-value-outer.svelte-1qi6rc1:hover,
+.jse-json-node.svelte-1qi6rc1 .jse-meta.svelte-1qi6rc1:hover,
+.jse-json-node.svelte-1qi6rc1 .jse-footer.svelte-1qi6rc1:hover {
+  background: var(--jse-hover-background-color, rgba(0, 0, 0, 0.06));
+  cursor: var(--jse-contents-cursor, pointer);
+}
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-meta,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-items .jse-header,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-items .jse-contents,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-props .jse-header,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-props .jse-contents,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-footer {
+  background: var(--jse-hover-background-color, rgba(0, 0, 0, 0.06));
+  cursor: var(--jse-contents-cursor, pointer);
+}
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-value-outer .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-value-outer .jse-meta,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-meta .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-meta .jse-meta,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-items .jse-header .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-items .jse-header .jse-meta,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-items .jse-contents .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-items .jse-contents .jse-meta,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-props .jse-header .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-props .jse-header .jse-meta,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-props .jse-contents .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-props .jse-contents .jse-meta,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-footer .jse-value-outer,
+.jse-json-node.jse-hovered.svelte-1qi6rc1:not(.jse-selected):not(.jse-selected-value) .jse-footer .jse-meta {
+  background: none;
+}
+.jse-json-node.jse-selected.svelte-1qi6rc1 .jse-header.svelte-1qi6rc1,
+.jse-json-node.jse-selected.svelte-1qi6rc1 .jse-contents.svelte-1qi6rc1,
+.jse-json-node.jse-selected.svelte-1qi6rc1 .jse-footer.svelte-1qi6rc1 {
+  background: var(--jse-selection-background-color, #d3d3d3);
+  cursor: var(--jse-contents-selected-cursor, grab);
+}
+.jse-json-node.jse-selected.svelte-1qi6rc1 .jse-key-outer.svelte-1qi6rc1:hover,
+.jse-json-node.jse-selected.svelte-1qi6rc1 .jse-value-outer.svelte-1qi6rc1:hover,
+.jse-json-node.jse-selected.svelte-1qi6rc1 .jse-meta.svelte-1qi6rc1:hover,
+.jse-json-node.jse-selected.svelte-1qi6rc1 .jse-footer.svelte-1qi6rc1:hover {
+  background: inherit;
+  cursor: inherit;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-key-outer.jse-selected-key.svelte-1qi6rc1 {
+  background: var(--jse-selection-background-color, #d3d3d3);
+  cursor: var(--jse-contents-selected-cursor, grab);
+}
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-value-outer,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-meta,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-items .jse-header,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-items .jse-contents,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-props .jse-header,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-props .jse-contents,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-footer {
+  background: var(--jse-selection-background-color, #d3d3d3);
+  cursor: var(--jse-contents-selected-cursor, grab);
+}
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-value-outer .jse-key-outer:hover,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-meta .jse-key-outer:hover,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-items .jse-header .jse-key-outer:hover,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-items .jse-contents .jse-key-outer:hover,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-props .jse-header .jse-key-outer:hover,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-props .jse-contents .jse-key-outer:hover,
+.jse-json-node.jse-selected-value.svelte-1qi6rc1 .jse-footer .jse-key-outer:hover {
+  background: inherit;
+  cursor: inherit;
+}
+.jse-json-node.jse-readonly.svelte-1qi6rc1 {
+  --jse-contents-selected-cursor: pointer;
+}
+.jse-json-node.svelte-1qi6rc1 .jse-insert-area.jse-selected.svelte-1qi6rc1 {
+  outline-color: var(--jse-context-menu-pointer-background, var(--jse-context-menu-background, #656565));
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-welcome.svelte-1lhnan {
+  flex: 1;
+  overflow: auto;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-welcome.svelte-1lhnan:last-child {
+  border-bottom: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-welcome.svelte-1lhnan .jse-space.jse-before.svelte-1lhnan {
+  flex: 1;
+}
+.jse-welcome.svelte-1lhnan .jse-space.jse-after.svelte-1lhnan {
+  flex: 2;
+}
+.jse-welcome.svelte-1lhnan .jse-contents.svelte-1lhnan {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 2em var(--jse-padding, 10px);
+  gap: var(--jse-padding, 10px);
+}
+.jse-welcome.svelte-1lhnan .jse-contents.svelte-1lhnan .jse-welcome-info.svelte-1lhnan {
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+}
+.jse-welcome.svelte-1lhnan .jse-contents.svelte-1lhnan button.svelte-1lhnan {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-button-primary-background, var(--jse-theme-color, #3883fa));
+  color: var(--jse-button-primary-color, #fff);
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  border-radius: 3px;
+}
+.jse-welcome.svelte-1lhnan .jse-contents.svelte-1lhnan button.svelte-1lhnan:hover {
+  background: var(--jse-button-primary-background-highlight, var(--jse-theme-color-highlight, #5f9dff));
+}
+.jse-welcome.svelte-1lhnan .jse-contents.svelte-1lhnan button.svelte-1lhnan:disabled {
+  background: var(--jse-button-primary-background-disabled, #9d9d9d);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-navigation-bar-dropdown.svelte-1k47orx {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 3;
+  background: var(--jse-navigation-bar-background, var(--jse-background-color, #fff));
+  color: var(--jse-navigation-bar-dropdown-color, #656565);
+  box-shadow: var(--jse-controls-box-shadow, 0 2px 6px 0 rgba(0, 0, 0, 0.24));
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  overflow: auto;
+  min-width: 80px;
+}
+.jse-navigation-bar-dropdown.svelte-1k47orx button.jse-navigation-bar-dropdown-item.svelte-1k47orx {
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: calc(0.5 * var(--jse-padding, 10px)) 36px;
+}
+.jse-navigation-bar-dropdown.svelte-1k47orx button.jse-navigation-bar-dropdown-item.svelte-1k47orx:focus, .jse-navigation-bar-dropdown.svelte-1k47orx button.jse-navigation-bar-dropdown-item.svelte-1k47orx:hover {
+  background: var(--jse-navigation-bar-background-highlight, #e5e5e5);
+}
+.jse-navigation-bar-dropdown.svelte-1k47orx button.jse-navigation-bar-dropdown-item.jse-selected.svelte-1k47orx {
+  background: var(--jse-navigation-bar-dropdown-color, #656565);
+  color: var(--jse-navigation-bar-background, var(--jse-background-color, #fff));
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-navigation-bar-item.svelte-13sijxb {
+  position: relative;
+  display: flex;
+}
+.jse-navigation-bar-item.svelte-13sijxb button.jse-navigation-bar-button.svelte-13sijxb {
+  font-family: inherit;
+  font-size: inherit;
+  padding: calc(0.5 * var(--jse-padding, 10px)) 2px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  min-width: 2em;
+  white-space: nowrap;
+}
+.jse-navigation-bar-item.svelte-13sijxb button.jse-navigation-bar-button.svelte-13sijxb:focus, .jse-navigation-bar-item.svelte-13sijxb button.jse-navigation-bar-button.svelte-13sijxb:hover {
+  background: var(--jse-panel-button-background-highlight, #e0e0e0);
+  color: var(--panel-button-color-highlight, var(--jse-text-color, #4d4d4d));
+}
+.jse-navigation-bar-item.svelte-13sijxb button.jse-navigation-bar-button.jse-navigation-bar-arrow.svelte-13sijxb {
+  padding: 2px var(--jse-padding, 10px) 0;
+}
+.jse-navigation-bar-item.svelte-13sijxb button.jse-navigation-bar-button.jse-navigation-bar-arrow.jse-open.svelte-13sijxb {
+  background: var(--jse-navigation-bar-background, var(--jse-background-color, #fff));
+  color: var(--jse-navigation-bar-dropdown-color, #656565);
+}
+.jse-navigation-bar-item.svelte-13sijxb:last-child {
+  padding-right: var(--jse-padding, 10px);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-navigation-bar-path-editor.svelte-uyexy4 {
+  flex: 1;
+  display: flex;
+  border: var(--jse-edit-outline, 2px solid #656565);
+  background: var(--jse-background-color, #fff);
+}
+.jse-navigation-bar-path-editor.svelte-uyexy4 input.jse-navigation-bar-text.svelte-uyexy4 {
+  flex: 1;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0 5px 1px;
+  background: var(--jse-background-color, #fff);
+  color: var(--jse-text-color, #4d4d4d);
+  border: none;
+  outline: none;
+}
+.jse-navigation-bar-path-editor.svelte-uyexy4 button.svelte-uyexy4 {
+  border: none;
+  background: var(--jse-background-color, #fff);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 80%;
+  color: inherit;
+}
+.jse-navigation-bar-path-editor.svelte-uyexy4 button.jse-navigation-bar-copy.copied.svelte-uyexy4 {
+  color: var(--message-success-background, #9ac45d);
+}
+.jse-navigation-bar-path-editor.svelte-uyexy4 button.jse-navigation-bar-validation-error.svelte-uyexy4 {
+  color: var(--jse-error-color, #ee5341);
+}
+.jse-navigation-bar-path-editor.error.svelte-uyexy4 {
+  border-color: var(--jse-error-color, #ee5341);
+}
+.jse-navigation-bar-path-editor.error.svelte-uyexy4 input.jse-navigation-bar-text.svelte-uyexy4 {
+  color: var(--jse-error-color, #ee5341);
+}
+.jse-navigation-bar-path-editor.svelte-uyexy4 .jse-copied-text.svelte-uyexy4 {
+  background: var(--message-success-background, #9ac45d);
+  color: var(--jse-message-success-color, #fff);
+  position: relative;
+  margin: 2px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-navigation-bar.svelte-hjhal6 {
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  background: var(--jse-panel-background, #ebebeb);
+  color: var(--jse-panel-button-color, inherit);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  overflow: auto;
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-navigation-bar.svelte-hjhal6 .jse-navigation-bar-edit.svelte-hjhal6 {
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px);
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  background: transparent;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  outline: none;
+  align-items: center;
+}
+.jse-navigation-bar.svelte-hjhal6 .jse-navigation-bar-edit.flex.svelte-hjhal6 {
+  flex: 1;
+}
+.jse-navigation-bar.svelte-hjhal6 .jse-navigation-bar-edit.svelte-hjhal6:focus, .jse-navigation-bar.svelte-hjhal6 .jse-navigation-bar-edit.svelte-hjhal6:hover, .jse-navigation-bar.svelte-hjhal6 .jse-navigation-bar-edit.editing.svelte-hjhal6 {
+  background: var(--jse-panel-button-background-highlight, #e0e0e0);
+  color: var(--panel-button-color-highlight, var(--jse-text-color, #4d4d4d));
+  transition: color 0.2s ease-in, background 0.2s ease-in;
+}
+.jse-navigation-bar.svelte-hjhal6 .jse-navigation-bar-edit.svelte-hjhal6 .jse-navigation-bar-space.svelte-hjhal6 {
+  flex: 1;
+  text-align: left;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-search-box.svelte-1x1x8q0 {
+  border: var(--jse-panel-border, var(--jse-main-border, 1px solid #d7d7d7));
+  border-radius: 3px;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  background: var(--jse-panel-background, #ebebeb);
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  box-shadow: var(--jse-controls-box-shadow, 0 2px 6px 0 rgba(0, 0, 0, 0.24));
+  display: inline-block;
+  width: 400px;
+  max-width: 100%;
+  overflow: auto;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 {
+  display: flex;
+  align-items: stretch;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 button.svelte-1x1x8q0,
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 input.svelte-1x1x8q0 {
+  font-family: inherit;
+  font-size: inherit;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 button.svelte-1x1x8q0 {
+  display: block;
+  text-align: center;
+  border: none;
+  padding: 0 5px;
+  margin: 0;
+  cursor: pointer;
+  color: var(--jse-panel-button-color, inherit);
+  background: var(--jse-panel-button-background, transparent);
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 button.svelte-1x1x8q0:hover {
+  color: var(--panel-button-color-highlight, var(--jse-text-color, #4d4d4d));
+  background: var(--jse-panel-button-background-highlight, #e0e0e0);
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 input.svelte-1x1x8q0 {
+  color: var(--jse-panel-color, var(--jse-text-color, #4d4d4d));
+  border: var(--jse-input-border, 1px solid #d8dbdf);
+  border-radius: 3px;
+  background: var(--jse-input-background, var(--jse-background-color, #fff));
+  height: 28px;
+  padding: 0 5px;
+  margin: 0;
+  flex: 1;
+  width: 0;
+  min-width: 50px;
+  outline: none;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-replace-toggle.svelte-1x1x8q0 {
+  padding: var(--jse-padding, 10px) calc(0.5 * var(--jse-padding, 10px));
+  min-width: 20px;
+  background: var(--jse-panel-button-background-highlight, #e0e0e0);
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: calc(0.5 * var(--jse-padding, 10px));
+  gap: calc(0.5 * var(--jse-padding, 10px));
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 .jse-search-section.svelte-1x1x8q0 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 .jse-search-section.svelte-1x1x8q0 .jse-search-icon.svelte-1x1x8q0 {
+  color: inherit;
+  cursor: inherit;
+  background: inherit;
+  width: 32px;
+  text-align: center;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 .jse-search-section.svelte-1x1x8q0 label.jse-search-input-label.svelte-1x1x8q0 {
+  flex: 1;
+  display: flex;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 .jse-search-section.svelte-1x1x8q0 .jse-search-count.svelte-1x1x8q0 {
+  color: inherit;
+  font-size: 80%;
+  visibility: hidden;
+  padding: 0 5px;
+  min-width: 36px;
+  text-align: center;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 .jse-search-section.svelte-1x1x8q0 .jse-search-count.jse-visible.svelte-1x1x8q0 {
+  visibility: visible;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 .jse-replace-section.svelte-1x1x8q0 {
+  flex: 1;
+  display: flex;
+  padding-left: 32px;
+}
+.jse-search-box.svelte-1x1x8q0 .jse-search-form.svelte-1x1x8q0 .jse-search-contents.svelte-1x1x8q0 .jse-replace-section.svelte-1x1x8q0 button.svelte-1x1x8q0 {
+  width: auto;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-json-preview.svelte-25xmyd {
+  flex: 1;
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  overflow: auto;
+  white-space: pre-wrap;
+  padding: 2px;
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+  border-bottom: var(--jse-main-border, 1px solid #d7d7d7);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+button.jse-context-menu-button.svelte-16jz6ui {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+  padding: var(--jse-padding, 10px);
+  color: inherit;
+}
+button.jse-context-menu-button.svelte-16jz6ui:hover {
+  background: var(--jse-context-menu-background-highlight, #7a7a7a);
+}
+button.jse-context-menu-button.svelte-16jz6ui:focus {
+  background: var(--jse-context-menu-background-highlight, #7a7a7a);
+  z-index: 1;
+}
+button.jse-context-menu-button.svelte-16jz6ui:disabled {
+  color: var(--jse-context-menu-color-disabled, #9d9d9d);
+  background: unset;
+}
+button.jse-context-menu-button.left.svelte-16jz6ui {
+  text-align: left;
+}
+button.jse-context-menu-button.svelte-16jz6ui svg {
+  width: 16px;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-dropdown-button.svelte-bov1j6 {
+  flex: 1;
+  line-height: normal;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  position: relative;
+  padding: 0;
+  display: flex;
+}
+.jse-dropdown-button.svelte-bov1j6 ul.svelte-bov1j6 {
+  margin: 0;
+  padding: 0;
+}
+.jse-dropdown-button.svelte-bov1j6 ul.svelte-bov1j6 li.svelte-bov1j6 {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.jse-dropdown-button.svelte-bov1j6 button.jse-open-dropdown.svelte-bov1j6 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  width: 2em;
+  background: var(--jse-context-menu-background, #656565);
+  color: var(--jse-context-menu-color, var(--jse-text-color-inverse, #fff));
+  border-radius: 0;
+}
+.jse-dropdown-button.svelte-bov1j6 button.jse-open-dropdown.jse-visible.svelte-bov1j6 {
+  background: var(--jse-context-menu-background, #656565);
+}
+.jse-dropdown-button.svelte-bov1j6 button.jse-open-dropdown.svelte-bov1j6:hover {
+  background: var(--jse-context-menu-background-highlight, #7a7a7a);
+}
+.jse-dropdown-button.svelte-bov1j6 button.jse-open-dropdown.svelte-bov1j6:focus {
+  z-index: 1;
+}
+.jse-dropdown-button.svelte-bov1j6 button.jse-open-dropdown.svelte-bov1j6:disabled {
+  color: var(--jse-context-menu-color-disabled, #9d9d9d);
+  background: unset;
+}
+.jse-dropdown-button.svelte-bov1j6 .jse-dropdown-items.svelte-bov1j6 {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background: var(--jse-context-menu-background, #656565);
+  color: var(--jse-context-menu-color, var(--jse-text-color-inverse, #fff));
+  box-shadow: var(--jse-controls-box-shadow, 0 2px 6px 0 rgba(0, 0, 0, 0.24));
+}
+.jse-dropdown-button.svelte-bov1j6 .jse-dropdown-items.jse-visible.svelte-bov1j6 {
+  display: block;
+}
+.jse-dropdown-button.svelte-bov1j6 .jse-dropdown-items.svelte-bov1j6 button.svelte-bov1j6 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  padding: var(--jse-padding, 10px);
+  margin: 0;
+}
+.jse-dropdown-button.svelte-bov1j6 .jse-dropdown-items.svelte-bov1j6 button.svelte-bov1j6:hover {
+  background: var(--jse-context-menu-background-highlight, #7a7a7a);
+}
+.jse-dropdown-button.svelte-bov1j6 .jse-dropdown-items.svelte-bov1j6 button.svelte-bov1j6:disabled {
+  color: var(--jse-context-menu-color-disabled, #9d9d9d);
+  background: unset;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+button.jse-context-menu-button.svelte-1y5l9l1 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+  padding: var(--jse-padding, 10px);
+  color: inherit;
+}
+button.jse-context-menu-button.svelte-1y5l9l1:hover {
+  background: var(--jse-context-menu-background-highlight, #7a7a7a);
+}
+button.jse-context-menu-button.svelte-1y5l9l1:focus {
+  background: var(--jse-context-menu-background-highlight, #7a7a7a);
+  z-index: 1;
+}
+button.jse-context-menu-button.svelte-1y5l9l1:disabled {
+  color: var(--jse-context-menu-color-disabled, #9d9d9d);
+  background: unset;
+}
+button.jse-context-menu-button.left.svelte-1y5l9l1 {
+  text-align: left;
+}
+button.jse-context-menu-button.svelte-1y5l9l1 svg {
+  width: 16px;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-contextmenu.svelte-1shjn02 {
+  box-shadow: var(--jse-controls-box-shadow, 0 2px 6px 0 rgba(0, 0, 0, 0.24));
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  background: var(--jse-context-menu-background, #656565);
+  color: var(--jse-context-menu-color, var(--jse-text-color-inverse, #fff));
+}
+.jse-contextmenu.svelte-1shjn02 .jse-row.svelte-1shjn02 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: stretch;
+}
+.jse-contextmenu.svelte-1shjn02 .jse-row.svelte-1shjn02 div.jse-label.svelte-1shjn02 {
+  flex: 1;
+  white-space: nowrap;
+  padding: var(--jse-padding, 10px);
+  color: var(--jse-context-menu-color-disabled, #9d9d9d);
+  line-height: normal;
+}
+.jse-contextmenu.svelte-1shjn02 .jse-row.svelte-1shjn02 div.jse-tip.svelte-1shjn02 {
+  flex: 1;
+  background: var(--jse-context-menu-tip-background, rgba(255, 255, 255, 0.2));
+  color: var(--context-menu-tip-color, inherit);
+  margin: calc(0.5 * var(--jse-padding, 10px));
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px);
+  font-size: 80%;
+  line-height: 1.3em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--jse-padding, 10px);
+  border-radius: 3px;
+}
+.jse-contextmenu.svelte-1shjn02 .jse-row.svelte-1shjn02 div.jse-tip.svelte-1shjn02 div.jse-tip-icon.svelte-1shjn02 {
+  padding-top: calc(0.5 * var(--jse-padding, 10px));
+}
+.jse-contextmenu.svelte-1shjn02 .jse-column.svelte-1shjn02 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.jse-contextmenu.svelte-1shjn02 .jse-column.svelte-1shjn02:not(:last-child) {
+  border-right: 1px solid var(--jse-context-menu-separator-color, #7a7a7a);
+}
+.jse-contextmenu.svelte-1shjn02 .jse-separator.svelte-1shjn02 {
+  width: 100%;
+  height: 1px;
+  background: var(--jse-context-menu-separator-color, #7a7a7a);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-value.jse-string.svelte-1htmvf1 {
+  color: var(--jse-value-color-string, #008000);
+}
+.jse-value.jse-object.svelte-1htmvf1, .jse-value.jse-array.svelte-1htmvf1 {
+  min-width: 16px;
+  color: var(--jse-delimiter-color, rgba(0, 0, 0, 0.38));
+}
+.jse-value.jse-number.svelte-1htmvf1 {
+  color: var(--jse-value-color-number, #ee422e);
+}
+.jse-value.jse-boolean.svelte-1htmvf1 {
+  color: var(--jse-value-color-boolean, #ff8c00);
+}
+.jse-value.jse-null.svelte-1htmvf1 {
+  color: var(--jse-value-color-null, #004ed0);
+}
+.jse-value.jse-invalid.svelte-1htmvf1 {
+  color: var(--jse-text-color, #4d4d4d);
+}
+.jse-value.jse-url.svelte-1htmvf1 {
+  color: var(--jse-value-color-url, #008000);
+  text-decoration: underline;
+}
+
+.jse-enum-value.svelte-1htmvf1 {
+  background: var(--jse-hover-background-color, rgba(0, 0, 0, 0.06));
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  outline: none;
+}
+.jse-enum-value.jse-selected.svelte-1htmvf1 {
+  background: var(--jse-selection-background-color, #d3d3d3);
+  color: inherit;
+}
+.jse-enum-value.jse-value.svelte-1htmvf1:focus {
+  color: var(--jse-text-color, #4d4d4d);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-tree-mode.svelte-10mlrw4 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--jse-background-color, #fff);
+  min-width: 0;
+  min-height: 0;
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  color: var(--jse-text-color, #4d4d4d);
+  line-height: var(--jse-line-height, calc(1em + 4px));
+}
+.jse-tree-mode.svelte-10mlrw4 .jse-hidden-input-label.svelte-10mlrw4 .jse-hidden-input.svelte-10mlrw4 {
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+.jse-tree-mode.no-main-menu.svelte-10mlrw4 {
+  border-top: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-tree-mode.svelte-10mlrw4 .jse-search-box-container.svelte-10mlrw4 {
+  position: relative;
+  height: 0;
+  top: var(--jse-padding, 10px);
+  margin-right: calc(var(--jse-padding, 10px) + 20px);
+  margin-left: var(--jse-padding, 10px);
+  text-align: right;
+  z-index: 3;
+}
+.jse-tree-mode.svelte-10mlrw4 .jse-contents.svelte-10mlrw4 {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-tree-mode.svelte-10mlrw4 .jse-contents.svelte-10mlrw4:last-child {
+  border-bottom: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-tree-mode.svelte-10mlrw4 .jse-contents.svelte-10mlrw4 .jse-loading-space.svelte-10mlrw4 {
+  flex: 1;
+}
+.jse-tree-mode.svelte-10mlrw4 .jse-contents.svelte-10mlrw4 .jse-loading.svelte-10mlrw4 {
+  flex: 2;
+  text-align: center;
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  box-sizing: border-box;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+}
+.jse-tree-mode.svelte-10mlrw4 .jse-contents.svelte-10mlrw4 .jse-search-box-background.svelte-10mlrw4 {
+  border: 50px solid var(--jse-modal-background, #f5f5f5);
+  margin: -2px;
+  margin-bottom: 2px;
+  display: inline-block;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-transform-modal-inner.svelte-lta8xm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm {
+  color: inherit;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-actions.svelte-lta8xm {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: var(--jse-padding, 10px);
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-actions.svelte-lta8xm button.jse-primary.svelte-lta8xm {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-button-primary-background, var(--jse-theme-color, #3883fa));
+  color: var(--jse-button-primary-color, #fff);
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  border-radius: 3px;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-actions.svelte-lta8xm button.jse-primary.svelte-lta8xm:hover {
+  background: var(--jse-button-primary-background-highlight, var(--jse-theme-color-highlight, #5f9dff));
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-actions.svelte-lta8xm button.jse-primary.svelte-lta8xm:disabled {
+  background: var(--jse-button-primary-background-disabled, #9d9d9d);
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm {
+  flex: 1;
+  display: flex;
+  gap: calc(2 * var(--jse-padding, 10px));
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 0 calc(2 * var(--jse-padding, 10px)) var(--jse-padding, 10px);
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm .jse-description.svelte-lta8xm p {
+  margin: var(--jse-padding, 10px) 0;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm .jse-description.svelte-lta8xm p:first-child {
+  margin-top: 0;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm .jse-description.svelte-lta8xm p:last-child {
+  margin-bottom: 0;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm .jse-description.svelte-lta8xm code {
+  background: var(--jse-modal-code-background, rgba(0, 0, 0, 0.05));
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm .query-error.svelte-lta8xm {
+  color: var(--jse-error-color, #ee5341);
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm textarea.jse-query.svelte-lta8xm {
+  flex: 1;
+  outline: none;
+  resize: vertical;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.svelte-lta8xm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--jse-padding, 10px));
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.svelte-lta8xm .jse-original-data.svelte-lta8xm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.svelte-lta8xm .jse-original-data.jse-hide.svelte-lta8xm {
+  flex: none;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.svelte-lta8xm .jse-preview-data.svelte-lta8xm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.jse-hide-original-data.svelte-lta8xm {
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 0;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-actions.svelte-lta8xm {
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px)) calc(2 * var(--jse-padding, 10px));
+}
+@media screen and (max-width: 1200px) {
+  .jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm {
+    flex-direction: column;
+    overflow: auto;
+  }
+  .jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-query-contents.svelte-lta8xm textarea.jse-query.svelte-lta8xm {
+    min-height: 150px;
+    flex: none;
+  }
+  .jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.svelte-lta8xm .jse-tree-mode {
+    height: 300px;
+    flex: none;
+  }
+  .jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.svelte-lta8xm .jse-original-data.svelte-lta8xm,
+  .jse-transform-modal-inner.svelte-lta8xm .jse-modal-contents.svelte-lta8xm .jse-main-contents.svelte-lta8xm .jse-data-contents.svelte-lta8xm .jse-preview-data.svelte-lta8xm {
+    flex: unset;
+  }
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-label.svelte-lta8xm {
+  font-weight: bold;
+  display: block;
+  box-sizing: border-box;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-label.svelte-lta8xm .jse-label-inner.svelte-lta8xm {
+  margin-top: calc(2 * var(--jse-padding, 10px));
+  margin-bottom: calc(0.5 * var(--jse-padding, 10px));
+  box-sizing: border-box;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-label.svelte-lta8xm .jse-label-inner.svelte-lta8xm button.svelte-lta8xm {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  font-weight: bold;
+  padding: 0;
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-tree-mode {
+  flex: 1;
+  background: var(--jse-input-background-readonly, transparent);
+  box-shadow: none;
+  box-sizing: border-box;
+  --jse-main-border: var(--jse-input-border, 1px solid #d8dbdf);
+}
+.jse-transform-modal-inner.svelte-lta8xm input.svelte-lta8xm,
+.jse-transform-modal-inner.svelte-lta8xm textarea.svelte-lta8xm {
+  border: var(--jse-input-border, 1px solid #d8dbdf);
+  outline: none;
+  box-sizing: border-box;
+  padding: calc(0.5 * var(--jse-padding, 10px));
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  color: inherit;
+  background: var(--jse-input-background, var(--jse-background-color, #fff));
+}
+.jse-transform-modal-inner.svelte-lta8xm input.svelte-lta8xm:focus,
+.jse-transform-modal-inner.svelte-lta8xm textarea.svelte-lta8xm:focus {
+  border: var(--jse-input-border-focus, 1px solid var(--jse-input-border-focus, var(--jse-theme-color, #3883fa)));
+}
+.jse-transform-modal-inner.svelte-lta8xm input.svelte-lta8xm:read-only,
+.jse-transform-modal-inner.svelte-lta8xm textarea.svelte-lta8xm:read-only {
+  background: var(--jse-input-background-readonly, transparent);
+}
+.jse-transform-modal-inner.svelte-lta8xm .jse-preview.jse-error.svelte-lta8xm {
+  flex: 1;
+  background: var(--jse-input-background-readonly, transparent);
+  border: var(--jse-input-border, 1px solid #d8dbdf);
+  color: var(--jse-error-color, #ee5341);
+  padding: calc(0.5 * var(--jse-padding, 10px));
+}
+.jse-transform-modal-inner.svelte-lta8xm a {
+  color: var(--jse-a-color, #156fc5);
+}
+.jse-transform-modal-inner.svelte-lta8xm a:hover {
+  color: var(--jse-a-color-highlight, #0f508d);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-status-bar.svelte-1pmgv9j {
+  background: var(--jse-panel-background, #ebebeb);
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  margin: 0;
+  border-top: var(--jse-panel-border, var(--jse-main-border, 1px solid #d7d7d7));
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+  display: flex;
+  gap: var(--jse-padding, 10px);
+}
+.jse-status-bar.svelte-1pmgv9j:last-child {
+  border-bottom: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-status-bar.svelte-1pmgv9j .jse-status-bar-info.svelte-1pmgv9j {
+  padding: 2px;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-text-mode.svelte-k2b9e6 {
+  --internal-key-color: var(--jse-key-color, #1a1a1a);
+  --internal-value-color-number: var(--jse-value-color-number, #ee422e);
+  --internal-value-color-boolean: var(--jse-value-color-boolean, #ff8c00);
+  --internal-value-color-string: var(--jse-value-color-string, #008000);
+  --internal-value-color-null: var(--jse-value-color-null, #004ed0);
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: var(--jse-background-color, #fff);
+}
+.jse-text-mode.no-main-menu.svelte-k2b9e6 {
+  border-top: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 {
+  flex: 1;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6:last-child {
+  border-bottom: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.jse-hidden.svelte-k2b9e6 {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor {
+  flex: 1;
+  overflow: hidden;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-scroller {
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  line-height: var(--jse-line-height, calc(1em + 4px));
+  color: var(--jse-delimiter-color, rgba(0, 0, 0, 0.38));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-gutters {
+  background: var(--jse-panel-background, #ebebeb);
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  border-right: var(--jse-panel-border, var(--jse-main-border, 1px solid #d7d7d7));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-activeLine,
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-activeLineGutter {
+  background: var(--jse-active-line-background-color, rgba(0, 0, 0, 0.06));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-selectionBackground {
+  background: var(--jse-selection-background-color, #d3d3d3);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-searchMatch {
+  background-color: var(--jse-search-match-color, #ffe665);
+  outline: var(--jse-search-match-outline, none);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-searchMatch.cm-searchMatch-selected {
+  background-color: var(--jse-search-match-active-color, var(--jse-search-match-color, #ffe665));
+  outline: var(--jse-search-match-outline, 2px solid #e0be00);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-selectionMatch {
+  background-color: var(--jse-search-match-background-color, rgba(153, 255, 119, 0.5019607843));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-foldPlaceholder {
+  background: var(--jse-tag-background, rgba(0, 0, 0, 0.2));
+  color: var(--jse-tag-color, var(--jse-text-color-inverse, #fff));
+  border: none;
+  padding: 0 var(--jse-padding, 10px);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-tooltip {
+  font-size: var(--jse-font-size, 16px);
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  color: var(--jse-tooltip-color, var(--jse-text-color, #4d4d4d));
+  background: var(--jse-tooltip-background, var(--jse-modal-background, #f5f5f5));
+  border: var(--jse-tooltip-border, var(--jse-main-border, 1px solid #d7d7d7));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-diagnosticAction {
+  background: var(--jse-tooltip-action-button-color, var(--jse-text-color-inverse, #fff));
+  background: var(--jse-tooltip-action-button-background, #4d4d4d);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-panels {
+  border-bottom: var(--jse-panel-border, var(--jse-main-border, 1px solid #d7d7d7));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-search {
+  background: var(--jse-panel-background, #ebebeb);
+  color: var(--jse-panel-color, var(--jse-text-color, #4d4d4d));
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-search input {
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size-text-mode-search, 80%);
+  color: var(--jse-input-color, var(--jse-text-color, #4d4d4d));
+  border: var(--jse-input-border, 1px solid #d8dbdf);
+  background: var(--jse-input-background, var(--jse-background-color, #fff));
+  margin-right: 2px;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-search button {
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size-text-mode-search, 80%);
+  color: var(--jse-panel-button-color, inherit);
+  background: var(--jse-panel-button-background, transparent);
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px);
+  margin: 0;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-search button:hover {
+  color: var(--panel-button-color-highlight, var(--jse-text-color, #4d4d4d));
+  background: var(--jse-panel-button-background-highlight, #e0e0e0);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-search label {
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size-text-mode-search, 80%);
+  padding-left: var(--jse-padding, 10px);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-search label input {
+  margin-right: 2px;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-search button[name='close'] {
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 0;
+  right: 0;
+  top: -4px;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .cm-editor .cm-cursor-primary {
+  border-color: var(--jse-text-color, #4d4d4d);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .jse-loading-space.svelte-k2b9e6 {
+  flex: 1;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.svelte-k2b9e6 .jse-loading.svelte-k2b9e6 {
+  flex: 2;
+  text-align: center;
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  box-sizing: border-box;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-contents.jse-preview.svelte-k2b9e6 {
+  flex: 1;
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 2px;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-fold-progress.svelte-k2b9e6 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--jse-background-color, #fff);
+  border-top: var(--jse-panel-border, var(--jse-main-border, 1px solid #d7d7d7));
+  border-bottom: var(--jse-panel-border, var(--jse-main-border, 1px solid #d7d7d7));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-fold-progress.svelte-k2b9e6 .jse-fold-tip.svelte-k2b9e6 {
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size-mono, 14px);
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-fold-progress.svelte-k2b9e6 .jse-fold-progress-track.svelte-k2b9e6 {
+  flex: 1;
+  height: 6px;
+  background: var(--jse-panel-background, #ebebeb);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--jse-panel-border, var(--jse-main-border, 1px solid #d7d7d7));
+}
+.jse-text-mode.svelte-k2b9e6 .jse-fold-progress.svelte-k2b9e6 .jse-fold-progress-fill.svelte-k2b9e6 {
+  height: 100%;
+  background: linear-gradient(90deg, var(--jse-theme-color, #3883fa), var(--jse-theme-color-highlight, #5f9dff));
+  border-radius: 2px;
+  transition: width 0.1s ease;
+  min-width: 2px;
+}
+.jse-text-mode.svelte-k2b9e6 .jse-fold-progress.svelte-k2b9e6 .jse-fold-cancel-button.svelte-k2b9e6 {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  background: var(--jse-theme-color, #3883fa);
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  border: 1px solid var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-text-mode.svelte-k2b9e6 .jse-fold-progress.svelte-k2b9e6 .jse-fold-cancel-button.svelte-k2b9e6:hover {
+  background: var(--jse-theme-color-highlight, #5f9dff);
+  color: #fff;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-inline-value.svelte-1jv89ui {
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  line-height: var(--jse-line-height, calc(1em + 4px));
+  border: none;
+  padding: 0 calc(0.5 * var(--jse-padding, 10px));
+  background: transparent;
+  color: inherit;
+  cursor: inherit;
+}
+.jse-inline-value.jse-highlight.svelte-1jv89ui {
+  background-color: var(--jse-search-match-color, #ffe665);
+  outline: var(--jse-search-match-outline, none);
+}
+.jse-inline-value.jse-highlight.jse-active.svelte-1jv89ui {
+  background-color: var(--jse-search-match-active-color, var(--jse-search-match-color, #ffe665));
+  outline: var(--jse-search-match-outline, 2px solid #e0be00);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-column-header.svelte-5pxwfq {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  display: flex;
+  gap: var(--jse-padding, 10px);
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px) calc(0.5 * var(--jse-padding, 10px)) calc(0.5 * var(--jse-padding, 10px));
+  width: 100%;
+}
+.jse-column-header.svelte-5pxwfq:hover {
+  background: var(--jse-table-header-background-highlight, #e8e8e8);
+}
+.jse-column-header.svelte-5pxwfq:not(.jse-column-header.jse-readonly) {
+  cursor: pointer;
+}
+.jse-column-header.svelte-5pxwfq span.jse-column-sort-icon.svelte-5pxwfq {
+  height: 1em;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-table-mode-welcome.svelte-1b9gnk8 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  align-items: center;
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-table-mode-welcome.svelte-1b9gnk8:last-child {
+  border-bottom: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-space.jse-before.svelte-1b9gnk8 {
+  flex: 1;
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jse-padding, 10px);
+  max-width: 400px;
+  margin: 2em var(--jse-padding, 10px);
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 .jse-nested-arrays-info.svelte-1b9gnk8 {
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 .jse-nested-property.svelte-1b9gnk8 {
+  display: flex;
+  align-items: center;
+  gap: var(--jse-padding, 10px);
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 .jse-nested-property.svelte-1b9gnk8 .jse-nested-property-path.svelte-1b9gnk8 {
+  flex: 1;
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 .jse-nested-property.svelte-1b9gnk8 .jse-nested-property-path.svelte-1b9gnk8 .jse-nested-property-count.svelte-1b9gnk8 {
+  opacity: 0.5;
+  white-space: nowrap;
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 button.jse-nested-array-action.svelte-1b9gnk8 {
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-button-primary-background, var(--jse-theme-color, #3883fa));
+  color: var(--jse-button-primary-color, #fff);
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  border-radius: 3px;
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 button.jse-nested-array-action.svelte-1b9gnk8:hover {
+  background: var(--jse-button-primary-background-highlight, var(--jse-theme-color-highlight, #5f9dff));
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-nested-arrays.svelte-1b9gnk8 button.jse-nested-array-action.svelte-1b9gnk8:disabled {
+  background: var(--jse-button-primary-background-disabled, #9d9d9d);
+}
+.jse-table-mode-welcome.svelte-1b9gnk8 .jse-space.jse-after.svelte-1b9gnk8 {
+  flex: 2;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-column-header.svelte-1wgrwv3 {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  display: flex;
+  gap: var(--jse-padding, 10px);
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px) calc(0.5 * var(--jse-padding, 10px)) calc(0.5 * var(--jse-padding, 10px));
+  width: 100%;
+}
+.jse-column-header.svelte-1wgrwv3:hover {
+  background: var(--jse-table-header-background-highlight, #e8e8e8);
+}
+.jse-column-header.svelte-1wgrwv3:not(.jse-column-header.jse-readonly) {
+  cursor: pointer;
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-table-mode.svelte-1p86y3c {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--jse-background-color, #fff);
+  min-width: 0;
+  min-height: 0;
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  color: var(--jse-text-color, #4d4d4d);
+  line-height: var(--jse-line-height, calc(1em + 4px));
+}
+.jse-table-mode.no-main-menu.svelte-1p86y3c {
+  border-top: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-table-mode.svelte-1p86y3c .jse-search-box-container.svelte-1p86y3c {
+  position: relative;
+  height: 0;
+  top: calc(var(--jse-line-height, calc(1em + 4px)) + 2 * var(--jse-padding, 10px));
+  margin-right: calc(var(--jse-padding, 10px) + 20px);
+  margin-left: var(--jse-padding, 10px);
+  text-align: right;
+  z-index: 3;
+}
+.jse-table-mode.svelte-1p86y3c .jse-hidden-input-label.svelte-1p86y3c {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.jse-table-mode.svelte-1p86y3c .jse-hidden-input-label.svelte-1p86y3c .jse-hidden-input.svelte-1p86y3c {
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c {
+  flex: 1;
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+  overflow: auto;
+  overflow-anchor: none;
+  scrollbar-gutter: stable;
+  border-left: var(--jse-main-border, 1px solid #d7d7d7);
+  border-right: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c:last-child {
+  border-bottom: var(--jse-main-border, 1px solid #d7d7d7);
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-invisible-start-section.svelte-1p86y3c td.svelte-1p86y3c,
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-invisible-end-section.svelte-1p86y3c td.svelte-1p86y3c {
+  margin: 0;
+  padding: 0;
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-search-box-background.svelte-1p86y3c {
+  background: var(--jse-table-header-background, #f5f5f5);
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-invisible-end-section.svelte-1p86y3c td.svelte-1p86y3c {
+  padding-bottom: var(--jse-padding, 10px);
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c:hover {
+  background-color: var(--jse-table-row-odd-background, rgba(0, 0, 0, 0.05));
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.svelte-1p86y3c {
+  padding: 0 var(--jse-padding, 10px) 0 0;
+  vertical-align: top;
+  white-space: nowrap;
+  height: var(--jse-line-height, calc(1em + 4px));
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.jse-table-cell-header.svelte-1p86y3c, .jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.jse-table-cell-gutter.svelte-1p86y3c {
+  font-weight: normal;
+  text-align: left;
+  color: var(--jse-text-readonly, #8d8d8d);
+  background: var(--jse-table-header-background, #f5f5f5);
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.jse-table-cell-header.svelte-1p86y3c {
+  padding: 0;
+  position: sticky;
+  top: 0;
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.jse-table-cell-header.svelte-1p86y3c .jse-table-root-error.svelte-1p86y3c {
+  padding: calc(0.5 * var(--jse-padding, 10px)) var(--jse-padding, 10px) calc(0.5 * var(--jse-padding, 10px)) calc(0.5 * var(--jse-padding, 10px));
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.jse-table-cell-gutter.svelte-1p86y3c {
+  padding: 0 var(--jse-padding, 10px) 0 calc(0.5 * var(--jse-padding, 10px));
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.svelte-1p86y3c .jse-value-outer.svelte-1p86y3c {
+  display: inline-block;
+  cursor: var(--jse-contents-cursor, pointer);
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.svelte-1p86y3c .jse-value-outer.svelte-1p86y3c:hover {
+  background: var(--jse-hover-background-color, rgba(0, 0, 0, 0.06));
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.svelte-1p86y3c .jse-value-outer.jse-selected-value.svelte-1p86y3c {
+  background: var(--jse-selection-background-color, #d3d3d3);
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.svelte-1p86y3c table.jse-table-main.svelte-1p86y3c .jse-table-row.svelte-1p86y3c .jse-table-cell.svelte-1p86y3c .jse-context-menu-anchor.svelte-1p86y3c {
+  display: inline-flex;
+  position: relative;
+  vertical-align: top;
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.jse-contents-loading.svelte-1p86y3c {
+  align-items: unset;
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.jse-contents-loading.svelte-1p86y3c .jse-loading-space.svelte-1p86y3c {
+  flex: 1;
+}
+.jse-table-mode.svelte-1p86y3c .jse-contents.jse-contents-loading.svelte-1p86y3c .jse-loading.svelte-1p86y3c {
+  flex: 2;
+  text-align: center;
+  color: var(--jse-panel-color-readonly, #b2b2b2);
+  box-sizing: border-box;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-modal-wrapper.svelte-t4zsk3 {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: var(--jse-padding, 10px);
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 button.jse-primary.svelte-t4zsk3 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-button-primary-background, var(--jse-theme-color, #3883fa));
+  color: var(--jse-button-primary-color, #fff);
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  border-radius: 3px;
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 button.jse-primary.svelte-t4zsk3:hover {
+  background: var(--jse-button-primary-background-highlight, var(--jse-theme-color-highlight, #5f9dff));
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 button.jse-primary.svelte-t4zsk3:disabled {
+  background: var(--jse-button-primary-background-disabled, #9d9d9d);
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 .jse-label.svelte-t4zsk3 {
+  font-weight: bold;
+  display: block;
+  box-sizing: border-box;
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 .jse-label.svelte-t4zsk3 .jse-label-inner.svelte-t4zsk3 {
+  margin-top: calc(2 * var(--jse-padding, 10px));
+  margin-bottom: calc(0.5 * var(--jse-padding, 10px));
+  box-sizing: border-box;
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-modal-contents.svelte-t4zsk3 .jse-modal-inline-editor.svelte-t4zsk3 {
+  flex: 1;
+  min-height: 150px;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  --jse-theme-color: var(--jse-modal-editor-theme-color, #707070);
+  --jse-theme-color-highlight: var(--jse-modal-editor-theme-color-highlight, #646464);
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 {
+  gap: var(--jse-padding, 10px);
+  align-items: center;
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 .jse-error.svelte-t4zsk3 {
+  flex: 1;
+  color: var(--jse-error-color, #ee5341);
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 button.jse-secondary.svelte-t4zsk3 {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-button-secondary-background, #d3d3d3);
+  color: var(--jse-button-secondary-color, var(--jse-text-color, #4d4d4d));
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  border-radius: 3px;
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 button.jse-secondary.svelte-t4zsk3:hover {
+  background: var(--jse-button-secondary-background-highlight, #e1e1e1);
+}
+.jse-modal-wrapper.svelte-t4zsk3 .jse-actions.svelte-t4zsk3 button.jse-secondary.svelte-t4zsk3:disabled {
+  background: var(--jse-button-secondary-background-disabled, #9d9d9d);
+}
+.jse-modal-wrapper.svelte-t4zsk3 input.svelte-t4zsk3 {
+  border: var(--jse-input-border, 1px solid #d8dbdf);
+  outline: none;
+  box-sizing: border-box;
+  padding: calc(0.5 * var(--jse-padding, 10px));
+  font-family: var(--jse-font-family-mono, consolas, menlo, monaco, "Ubuntu Mono", "source-code-pro", monospace);
+  font-size: var(--jse-font-size-mono, 14px);
+  color: inherit;
+  background: var(--jse-input-background, var(--jse-background-color, #fff));
+}
+.jse-modal-wrapper.svelte-t4zsk3 input.svelte-t4zsk3:focus {
+  border: var(--jse-input-border-focus, 1px solid var(--jse-input-border-focus, var(--jse-theme-color, #3883fa)));
+}
+.jse-modal-wrapper.svelte-t4zsk3 input.svelte-t4zsk3:read-only {
+  background: var(--jse-input-background-readonly, transparent);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-modal-contents.svelte-lwzlls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow: auto;
+  min-width: 0;
+  min-height: 0;
+}
+.jse-modal-contents.svelte-lwzlls .jse-actions.svelte-lwzlls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: var(--jse-padding, 10px);
+}
+.jse-modal-contents.svelte-lwzlls .jse-actions.svelte-lwzlls button.jse-primary.svelte-lwzlls {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  padding: 5px;
+  margin: 0;
+  background: var(--jse-button-primary-background, var(--jse-theme-color, #3883fa));
+  color: var(--jse-button-primary-color, #fff);
+  padding: var(--jse-padding, 10px) calc(2 * var(--jse-padding, 10px));
+  border-radius: 3px;
+}
+.jse-modal-contents.svelte-lwzlls .jse-actions.svelte-lwzlls button.jse-primary.svelte-lwzlls:hover {
+  background: var(--jse-button-primary-background-highlight, var(--jse-theme-color-highlight, #5f9dff));
+}
+.jse-modal-contents.svelte-lwzlls .jse-actions.svelte-lwzlls button.jse-primary.svelte-lwzlls:disabled {
+  background: var(--jse-button-primary-background-disabled, #9d9d9d);
+}
+.jse-modal-contents.svelte-lwzlls table.svelte-lwzlls {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.jse-modal-contents.svelte-lwzlls table.svelte-lwzlls th.svelte-lwzlls,
+.jse-modal-contents.svelte-lwzlls table.svelte-lwzlls td.svelte-lwzlls {
+  text-align: left;
+  vertical-align: middle;
+  font-weight: normal;
+  padding-bottom: var(--jse-padding, 10px);
+}
+.jse-modal-contents.svelte-lwzlls input.jse-path.svelte-lwzlls {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: var(--jse-input-border, 1px solid #d8dbdf);
+  border-radius: var(--jse-input-radius, 3px);
+  font-family: inherit;
+  font-size: inherit;
+  background: inherit;
+  background: var(--jse-input-background-readonly, transparent);
+  color: inherit;
+  outline: none;
+}
+.jse-modal-contents.svelte-lwzlls .svelte-select input {
+  box-sizing: border-box;
+}
+.jse-modal-contents.svelte-lwzlls .jse-space.svelte-lwzlls {
+  height: 200px;
+}
+.jse-modal-contents.svelte-lwzlls .jse-space.svelte-lwzlls .jse-error.svelte-lwzlls {
+  color: var(--jse-error-color, #ee5341);
+}
+
+/* over all fonts, sizes, and colors */
+/* "consolas" for Windows, "menlo" for Mac with fallback to "monaco", 'Ubuntu Mono' for Ubuntu */
+/* (at Mac this font looks too large at 14px, but 13px is too small for the font on Windows) */
+/* main, menu, modal */
+/* jsoneditor modal */
+/* tooltip in text mode */
+/* panels: navigation bar, gutter, search box */
+/* navigation-bar */
+/* context menu */
+/* contents: json key and values */
+/* contents: selected or hovered */
+/* contents: section of collapsed items in an array */
+/* contents: highlighting of search matches */
+/* contents: inline tags inside the JSON document */
+/* contents: table */
+/* controls in modals: inputs, buttons, and `a` */
+/* messages */
+/* svelte-select */
+/* color picker */
+.jse-main.svelte-1l55585 {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 150px;
+  font-family: var(--jse-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+  font-size: var(--jse-font-size, 16px);
+  line-height: normal;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.jse-main.svelte-1l55585:not(.jse-focus) {
+  --jse-selection-background-color: var(--jse-selection-background-inactive-color, #e8e8e8);
+  --jse-context-menu-pointer-background: var(--jse-context-menu-pointer-hover-background, #b2b2b2);
+}
