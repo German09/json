@@ -62,6 +62,199 @@
           return this.split(searchValue).join(replaceValue)
         }
       }
+
+      if (typeof Array.prototype.flat === 'undefined') {
+        Array.prototype.flat = function (depth) {
+          var result = []
+          var maxDepth = depth === undefined ? 1 : depth
+
+          function flatten(array, currentDepth) {
+            for (var i = 0; i < array.length; i++) {
+              if (i in array) {
+                var value = array[i]
+                if (Array.isArray(value) && currentDepth > 0) {
+                  flatten(value, currentDepth - 1)
+                } else {
+                  result.push(value)
+                }
+              }
+            }
+          }
+
+          flatten(this, maxDepth)
+          return result
+        }
+      }
+
+      if (typeof Array.prototype.flatMap === 'undefined') {
+        Array.prototype.flatMap = function (callback, thisArg) {
+          var result = []
+
+          for (var i = 0; i < this.length; i++) {
+            if (i in this) {
+              var mapped = callback.call(thisArg, this[i], i, this)
+              if (Array.isArray(mapped)) {
+                for (var j = 0; j < mapped.length; j++) {
+                  result.push(mapped[j])
+                }
+              } else {
+                result.push(mapped)
+              }
+            }
+          }
+
+          return result
+        }
+      }
+
+      ;(function () {
+        function keyFromKeyCode(keyCode, shiftKey) {
+          if (keyCode >= 65 && keyCode <= 90) {
+            var letter = String.fromCharCode(keyCode)
+            return shiftKey ? letter : letter.toLowerCase()
+          }
+
+          if (keyCode >= 48 && keyCode <= 57) {
+            return String.fromCharCode(keyCode)
+          }
+
+          var map = {
+            8: 'Backspace',
+            9: 'Tab',
+            13: 'Enter',
+            16: 'Shift',
+            17: 'Control',
+            18: 'Alt',
+            19: 'Pause',
+            20: 'CapsLock',
+            27: 'Escape',
+            32: ' ',
+            33: 'PageUp',
+            34: 'PageDown',
+            35: 'End',
+            36: 'Home',
+            37: 'ArrowLeft',
+            38: 'ArrowUp',
+            39: 'ArrowRight',
+            40: 'ArrowDown',
+            45: 'Insert',
+            46: 'Delete',
+            91: 'Meta',
+            92: 'Meta',
+            93: 'ContextMenu',
+            112: 'F1',
+            113: 'F2',
+            114: 'F3',
+            115: 'F4',
+            116: 'F5',
+            117: 'F6',
+            118: 'F7',
+            119: 'F8',
+            120: 'F9',
+            121: 'F10',
+            122: 'F11',
+            123: 'F12'
+          }
+
+          return map[keyCode] || 'Unidentified'
+        }
+
+        function keyFromIdentifier(keyIdentifier, shiftKey) {
+          if (!keyIdentifier) {
+            return ''
+          }
+
+          if (keyIdentifier.indexOf('U+') === 0) {
+            var code = parseInt(keyIdentifier.slice(2), 16)
+            if (code === 10) {
+              return 'Enter'
+            }
+            if (code >= 32 && code < 127) {
+              var character = String.fromCharCode(code)
+              if (character.length === 1 && character >= 'A' && character <= 'Z' && !shiftKey) {
+                return character.toLowerCase()
+              }
+              return character
+            }
+          }
+
+          return keyIdentifier
+        }
+
+        function needsKeyboardKeyPolyfill() {
+          if (typeof KeyboardEvent === 'undefined') {
+            return false
+          }
+
+          try {
+            if (
+              globalThis.CSS &&
+              globalThis.CSS.supports &&
+              !globalThis.CSS.supports('selector(:where(*))')
+            ) {
+              return true
+            }
+          } catch (error) {}
+
+          if (!('key' in KeyboardEvent.prototype)) {
+            return true
+          }
+
+          try {
+            var event = document.createEvent('KeyboardEvent')
+            return typeof event.key === 'undefined'
+          } catch (error) {
+            return true
+          }
+        }
+
+        if (!needsKeyboardKeyPolyfill()) {
+          return
+        }
+
+        Object.defineProperty(KeyboardEvent.prototype, 'key', {
+          configurable: true,
+          get: function () {
+            if (typeof this.__polyfillKey === 'string') {
+              return this.__polyfillKey
+            }
+
+            var keyCode = this.keyCode || this.which || 0
+            var key = keyFromIdentifier(this.keyIdentifier, this.shiftKey)
+
+            if (!key || key === 'Unidentified') {
+              key = keyFromKeyCode(keyCode, this.shiftKey)
+            }
+
+            this.__polyfillKey = key
+            return key
+          }
+        })
+      })()
+
+      if (typeof ResizeObserver === 'undefined') {
+        document.write('<script src="./vendor/resize-observer-polyfill.js"><\/script>')
+      }
+
+      ;(function () {
+        var needsIntersectionObserverPolyfill = typeof IntersectionObserver === 'undefined'
+
+        try {
+          if (
+            globalThis.CSS &&
+            globalThis.CSS.supports &&
+            !globalThis.CSS.supports('selector(:where(*))')
+          ) {
+            needsIntersectionObserverPolyfill = true
+          }
+        } catch (error) {
+          needsIntersectionObserverPolyfill = true
+        }
+
+        if (needsIntersectionObserverPolyfill) {
+          document.write('<script src="./vendor/intersection-observer-polyfill.js"><\/script>')
+        }
+      })()
     </script>
 
     <script>
@@ -92,6 +285,135 @@
           watch: true
         })
       }
+    </script>
+
+    <script>
+      ;(function () {
+        var dialog = document.createElement('dialog')
+        if (typeof dialog.showModal === 'function') {
+          return
+        }
+
+        document.write('<link rel="stylesheet" href="./vendor/dialog-polyfill.css">')
+      })()
+    </script>
+    <script src="./vendor/dialog-polyfill.js"></script>
+    <script>
+      ;(function () {
+        if (typeof dialogPolyfill === 'undefined') {
+          return
+        }
+
+        function needsDialogPolyfill() {
+          var dialog = document.createElement('dialog')
+          return typeof dialog.showModal !== 'function' || typeof dialog.close !== 'function'
+        }
+
+        if (!needsDialogPolyfill()) {
+          return
+        }
+
+        function isDialogRegistered(element) {
+          return Object.prototype.hasOwnProperty.call(element, 'showModal') &&
+            typeof element.showModal === 'function'
+        }
+
+        function registerDialogElement(element) {
+          if (!element || element.nodeType !== 1) {
+            return
+          }
+
+          if (element.localName === 'dialog' && !isDialogRegistered(element)) {
+            dialogPolyfill.forceRegisterDialog(element)
+          }
+
+          if (element.querySelectorAll) {
+            var dialogs = element.querySelectorAll('dialog')
+            for (var i = 0; i < dialogs.length; i++) {
+              if (!isDialogRegistered(dialogs[i])) {
+                dialogPolyfill.forceRegisterDialog(dialogs[i])
+              }
+            }
+          }
+        }
+
+        function callDialogMethod(element, methodName) {
+          var descriptor = Object.getOwnPropertyDescriptor(element, methodName)
+          if (descriptor && typeof descriptor.value === 'function') {
+            return descriptor.value.apply(element, Array.prototype.slice.call(arguments, 2))
+          }
+        }
+
+        if (typeof HTMLElement.prototype.showModal !== 'function') {
+          HTMLElement.prototype.showModal = function () {
+            if (this.localName !== 'dialog') {
+              throw new TypeError('showModal called on non-dialog element')
+            }
+
+            registerDialogElement(this)
+            return callDialogMethod(this, 'showModal')
+          }
+        }
+
+        if (typeof HTMLElement.prototype.close !== 'function') {
+          HTMLElement.prototype.close = function () {
+            if (this.localName !== 'dialog') {
+              return
+            }
+
+            registerDialogElement(this)
+            return callDialogMethod(this, 'close')
+          }
+        }
+
+        function patchNodeMethod(methodName) {
+          var original = Node.prototype[methodName]
+          if (!original) {
+            return
+          }
+
+          Node.prototype[methodName] = function (node) {
+            registerDialogElement(node)
+            return original.apply(this, arguments)
+          }
+        }
+
+        patchNodeMethod('appendChild')
+        patchNodeMethod('insertBefore')
+        patchNodeMethod('replaceChild')
+
+        var originalCreateElement = document.createElement.bind(document)
+        document.createElement = function (tagName) {
+          var element = originalCreateElement(tagName)
+          if (String(tagName).toLowerCase() === 'dialog') {
+            registerDialogElement(element)
+          }
+          return element
+        }
+
+        function startDialogObserver() {
+          registerDialogElement(document.body)
+
+          if (typeof MutationObserver === 'undefined') {
+            return
+          }
+
+          new MutationObserver(function (mutations) {
+            for (var i = 0; i < mutations.length; i++) {
+              var nodes = mutations[i].addedNodes
+              for (var j = 0; j < nodes.length; j++) {
+                registerDialogElement(nodes[j])
+              }
+            }
+          }).observe(document.body, { childList: true, subtree: true })
+        }
+
+        if (document.body) {
+          startDialogObserver()
+        } else {
+          document.addEventListener('DOMContentLoaded', startDialogObserver)
+        }
+      })()
     </script>
 
     <script type="module">
