@@ -1,5 +1,7 @@
-import { SvelteComponent } from 'svelte';
-import { JSONPath, JSONPatchDocument, JSONPointer } from 'immutable-json-patch';
+import * as svelte from 'svelte';
+import { SvelteComponent, Component, mount } from 'svelte';
+import * as immutable_json_patch from 'immutable-json-patch';
+import { JSONPath, JSONPatchDocument } from 'immutable-json-patch';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Action } from 'svelte/action';
 import Ajv, { Options } from 'ajv';
@@ -54,22 +56,83 @@ interface CaretPosition {
     path: JSONPath;
     type: CaretType;
 }
-interface DocumentState {
-    expandedMap: JSONPointerMap<boolean>;
-    enforceStringMap: JSONPointerMap<boolean>;
-    visibleSectionsMap: JSONPointerMap<VisibleSection[]>;
-    selection: JSONSelection | null;
-    sortedColumn: SortedColumn | null;
+interface ObjectRecursiveState {
+    type: 'object';
+    properties: Record<string, RecursiveState | undefined>;
 }
+interface ArrayRecursiveState {
+    type: 'array';
+    items: Array<RecursiveState | undefined>;
+}
+interface ValueRecursiveState {
+    type: 'value';
+}
+type RecursiveState = ObjectRecursiveState | ArrayRecursiveState | ValueRecursiveState;
+interface RecursiveStateFactory {
+    createObjectDocumentState: () => ObjectRecursiveState;
+    createArrayDocumentState: () => ArrayRecursiveState;
+    createValueDocumentState: () => ValueRecursiveState;
+}
+interface ObjectDocumentState extends ObjectRecursiveState {
+    type: 'object';
+    properties: Record<string, DocumentState | undefined>;
+    expanded: boolean;
+}
+interface ArrayDocumentState extends ArrayRecursiveState {
+    type: 'array';
+    items: Array<DocumentState | undefined>;
+    expanded: boolean;
+    visibleSections: VisibleSection[];
+}
+interface ValueDocumentState extends ValueRecursiveState {
+    type: 'value';
+    enforceString?: boolean;
+}
+type DocumentState = ObjectDocumentState | ArrayDocumentState | ValueDocumentState;
+interface ObjectSearchResults extends ObjectRecursiveState {
+    type: 'object';
+    properties: Record<string, SearchResults | undefined>;
+    searchResults?: ExtendedSearchResultItem[];
+}
+interface ArraySearchResults extends ArrayRecursiveState {
+    type: 'array';
+    items: Array<SearchResults | undefined>;
+    searchResults?: ExtendedSearchResultItem[];
+}
+interface ValueSearchResults extends ValueRecursiveState {
+    type: 'value';
+    searchResults?: ExtendedSearchResultItem[];
+}
+type SearchResults = ObjectSearchResults | ArraySearchResults | ValueSearchResults;
+type WithSearchResults = SearchResults & {
+    searchResults: ExtendedSearchResultItem[];
+};
+interface ObjectValidationErrors extends ObjectRecursiveState {
+    type: 'object';
+    properties: Record<string, ValidationErrors | undefined>;
+    validationError?: NestedValidationError;
+}
+interface ArrayValidationErrors extends ArrayRecursiveState {
+    type: 'array';
+    items: Array<ValidationErrors | undefined>;
+    validationError?: NestedValidationError;
+}
+interface ValueValidationErrors extends ValueRecursiveState {
+    type: 'value';
+    validationError?: NestedValidationError;
+}
+type ValidationErrors = ObjectValidationErrors | ArrayValidationErrors | ValueValidationErrors;
 interface JSONPatchResult {
     json: unknown;
     previousJson: unknown;
     undo: JSONPatchDocument;
     redo: JSONPatchDocument;
 }
-type AfterPatchCallback = (patchedJson: unknown, patchedState: DocumentState) => {
+type AfterPatchCallback = (patchedJson: unknown, patchedState: DocumentState | undefined, patchedSelection: JSONSelection | undefined) => {
     json?: unknown;
-    state?: DocumentState;
+    state?: DocumentState | undefined;
+    selection?: JSONSelection | undefined;
+    sortedColumn?: SortedColumn | undefined;
 } | undefined;
 interface MultiSelection {
     type: SelectionType.multi;
@@ -87,14 +150,24 @@ interface InsideSelection {
 interface KeySelection {
     type: SelectionType.key;
     path: JSONPath;
-    edit?: boolean;
 }
-interface ValueSelection {
+interface EditKeySelection extends KeySelection {
+    type: SelectionType.key;
+    path: JSONPath;
+    edit: true;
+    initialValue?: string;
+}
+type ValueSelection = {
     type: SelectionType.value;
     path: JSONPath;
-    edit?: boolean;
+};
+interface EditValueSelection extends ValueSelection {
+    type: SelectionType.value;
+    path: JSONPath;
+    edit: true;
+    initialValue?: string;
 }
-type JSONSelection = MultiSelection | AfterSelection | InsideSelection | KeySelection | ValueSelection;
+type JSONSelection = MultiSelection | AfterSelection | InsideSelection | KeySelection | EditKeySelection | ValueSelection | EditValueSelection;
 interface TextSelection {
     type: SelectionType.text;
     ranges: {
@@ -104,7 +177,10 @@ interface TextSelection {
     main: number;
 }
 type JSONEditorSelection = JSONSelection | TextSelection;
-type JSONPointerMap<T> = Record<JSONPointer, T>;
+interface ScrollToOptions {
+    scrollToWhenVisible?: boolean;
+    element?: Element;
+}
 type ClipboardValues = Array<{
     key: string;
     value: unknown;
@@ -167,9 +243,9 @@ interface NestedValidationError extends ValidationError {
 }
 type Validator = (json: unknown) => ValidationError[];
 interface ParseError {
-    position: number | null;
-    line: number | null;
-    column: number | null;
+    position: number | undefined;
+    line: number | undefined;
+    column: number | undefined;
     message: string;
 }
 interface ContentParseError {
@@ -181,14 +257,14 @@ interface ContentValidationErrors {
 }
 type ContentErrors = ContentParseError | ContentValidationErrors;
 interface RichValidationError extends ValidationError {
-    line: number | null;
-    column: number | null;
-    from: number | null;
-    to: number | null;
+    line: number | undefined;
+    column: number | undefined;
+    from: number | undefined;
+    to: number | undefined;
     actions: Array<{
         name: string;
         apply: () => void;
-    }> | null;
+    }> | undefined;
 }
 interface TextLocation {
     path: JSONPath;
@@ -224,12 +300,14 @@ interface QueryLanguageOptions {
 }
 type OnChangeQueryLanguage = (queryLanguageId: string) => void;
 interface OnChangeStatus {
-    contentErrors: ContentErrors | null;
-    patchResult: JSONPatchResult | null;
+    contentErrors: ContentErrors | undefined;
+    patchResult: JSONPatchResult | undefined;
 }
-type OnChange = ((content: Content, previousContent: Content, status: OnChangeStatus) => void) | null;
+type OnChange = ((content: Content, previousContent: Content, status: OnChangeStatus) => void) | undefined;
 type OnJSONSelect = (selection: JSONSelection) => void;
-type OnSelect = (selection: JSONEditorSelection | null) => void;
+type OnSelect = (selection: JSONEditorSelection | undefined) => void;
+type OnUndo = (item: HistoryItem | undefined) => void;
+type OnRedo = (item: HistoryItem | undefined) => void;
 type OnPatch = (operations: JSONPatchDocument, afterPatch?: AfterPatchCallback) => JSONPatchResult;
 type OnChangeText = (updatedText: string, afterPatch?: AfterPatchCallback) => void;
 type OnSort = (params: {
@@ -240,11 +318,8 @@ type OnSort = (params: {
 }) => void;
 type OnFind = (findAndReplace: boolean) => void;
 type OnPaste = (pastedText: string) => void;
-type OnPasteJson = (pastedJson: {
-    path: JSONPath;
-    contents: unknown;
-}) => void;
-type OnExpand = (path: JSONPath) => boolean;
+type OnPasteJson = (pastedJson: PastedJson) => void;
+type OnExpand = (relativePath: JSONPath) => boolean;
 type OnRenderValue = (props: RenderValueProps) => RenderValueComponentDescription[];
 type OnClassName = (path: JSONPath, value: unknown) => string | undefined;
 type OnChangeMode = (mode: Mode) => void;
@@ -255,22 +330,21 @@ type RenderMenuContext = {
     readOnly: boolean;
 };
 type OnRenderMenu = (items: MenuItem[], context: RenderMenuContext) => MenuItem[] | undefined;
-type OnRenderMenuInternal = (items: MenuItem[]) => MenuItem[];
+type OnRenderMenuInternal = (items: MenuItem[]) => MenuItem[] | undefined;
 type RenderContextMenuContext = RenderMenuContext & {
-    selection: JSONEditorSelection | null;
+    selection: JSONEditorSelection | undefined;
 };
 type OnRenderContextMenu = (items: ContextMenuItem[], context: RenderContextMenuContext) => ContextMenuItem[] | false | undefined;
-type OnRenderContextMenuInternal = (items: ContextMenuItem[]) => ContextMenuItem[] | false;
+type OnRenderContextMenuInternal = (items: ContextMenuItem[]) => ContextMenuItem[] | false | undefined;
 type OnError = (error: Error) => void;
 type OnFocus = () => void;
 type OnBlur = () => void;
 type OnSortModal = (props: SortModalCallback) => void;
 type OnTransformModal = (props: TransformModalCallback) => void;
 type OnJSONEditorModal = (props: JSONEditorModalCallback) => void;
-type FindNextInside = (path: JSONPath) => JSONSelection | null;
-interface SearchResult {
+type FindNextInside = (path: JSONPath) => JSONSelection | undefined;
+interface SearchResultDetails {
     items: ExtendedSearchResultItem[];
-    itemsMap: JSONPointerMap<ExtendedSearchResultItem[]>;
     activeItem: ExtendedSearchResultItem | undefined;
     activeIndex: number | -1;
 }
@@ -290,6 +364,7 @@ interface SearchResultItem {
     end: number;
 }
 interface ExtendedSearchResultItem extends SearchResultItem {
+    resultIndex: number;
     active: boolean;
 }
 type EscapeValue = (value: unknown) => string;
@@ -299,9 +374,10 @@ interface ValueNormalization {
     unescapeValue: UnescapeValue;
 }
 type PastedJson = {
-    contents: unknown;
     path: JSONPath;
-} | undefined;
+    contents: unknown;
+    onPasteAsJson: () => void;
+};
 interface DragInsideProps {
     json: unknown;
     selection: JSONSelection;
@@ -322,21 +398,62 @@ interface RenderedItem {
     path: JSONPath;
     height: number;
 }
-interface HistoryItem {
+interface TreeHistoryItem {
+    type: 'tree';
     undo: {
         patch: JSONPatchDocument | undefined;
         json: unknown | undefined;
         text: string | undefined;
-        state: DocumentState;
+        documentState: DocumentState | undefined;
+        selection: JSONSelection | undefined;
+        sortedColumn: SortedColumn | undefined;
         textIsRepaired: boolean;
     };
     redo: {
         patch: JSONPatchDocument | undefined;
         json: unknown | undefined;
         text: string | undefined;
-        state: DocumentState;
+        documentState: DocumentState | undefined;
+        selection: JSONSelection | undefined;
+        sortedColumn: SortedColumn | undefined;
         textIsRepaired: boolean;
     };
+}
+type TextChanges = Array<number | [number, ...string[]]>;
+interface TextHistoryItem {
+    type: 'text';
+    undo: {
+        changes: TextChanges;
+        selection: TextSelection;
+    };
+    redo: {
+        changes: TextChanges;
+        selection: TextSelection;
+    };
+}
+interface ModeHistoryItem {
+    type: 'mode';
+    undo: {
+        mode: Mode;
+        selection: undefined;
+    };
+    redo: {
+        mode: Mode;
+        selection: undefined;
+    };
+}
+type HistoryItem = TreeHistoryItem | TextHistoryItem | ModeHistoryItem;
+interface HistoryInstance<T> {
+    get: () => History<T>;
+}
+interface History<T> {
+    canUndo: boolean;
+    canRedo: boolean;
+    items: () => T[];
+    add: (item: T) => void;
+    clear: () => void;
+    undo: () => T | undefined;
+    redo: () => T | undefined;
 }
 type ConvertType = 'value' | 'object' | 'array';
 type InsertType = ConvertType | 'structure';
@@ -365,9 +482,11 @@ interface AbsolutePopupContext {
 }
 interface JSONEditorPropsOptional {
     content?: Content;
+    selection?: JSONEditorSelection;
     readOnly?: boolean;
     indentation?: number | string;
     tabSize?: number;
+    truncateTextSize?: number;
     mode?: Mode;
     mainMenuBar?: boolean;
     navigationBar?: boolean;
@@ -377,9 +496,10 @@ interface JSONEditorPropsOptional {
     escapeUnicodeCharacters?: boolean;
     flattenColumns?: boolean;
     parser?: JSONParser;
-    validator?: Validator | null;
+    validator?: Validator | undefined;
     validationParser?: JSONParser;
     pathParser?: JSONPathParser;
+    maxDocumentSizeTextMode?: number;
     queryLanguages?: QueryLanguage[];
     queryLanguageId?: string;
     onChangeQueryLanguage?: OnChangeQueryLanguage;
@@ -394,13 +514,43 @@ interface JSONEditorPropsOptional {
     onFocus?: OnFocus;
     onBlur?: OnBlur;
 }
-interface JSONEditorContext {
+interface JSONEditorModalProps {
+    content: Content;
+    path: JSONPath;
+    onPatch: OnPatch;
     readOnly: boolean;
+    indentation: number | string;
+    tabSize: number;
+    truncateTextSize: number;
+    mainMenuBar: boolean;
+    navigationBar: boolean;
+    statusBar: boolean;
+    askToFormat: boolean;
+    escapeControlCharacters: boolean;
+    escapeUnicodeCharacters: boolean;
+    maxDocumentSizeTextMode: number;
+    flattenColumns: boolean;
+    parser: JSONParser;
+    validator: Validator | undefined;
+    validationParser: JSONParser;
+    pathParser: JSONPathParser;
+    onRenderValue: OnRenderValue;
+    onClassName: OnClassName;
+    onRenderMenu: OnRenderMenu;
+    onRenderContextMenu: OnRenderContextMenu;
+    onSortModal: (props: SortModalCallback) => void;
+    onTransformModal: (props: TransformModalCallback) => void;
+    onClose: () => void;
+}
+interface JSONEditorContext {
+    mode: Mode;
+    readOnly: boolean;
+    truncateTextSize: number;
     parser: JSONParser;
     normalization: ValueNormalization;
     getJson: () => unknown | undefined;
-    getDocumentState: () => DocumentState;
-    findElement: (path: JSONPath) => Element | null;
+    getDocumentState: () => DocumentState | undefined;
+    findElement: (path: JSONPath) => Element | undefined;
     findNextInside: FindNextInside;
     focus: () => void;
     onPatch: OnPatch;
@@ -411,8 +561,9 @@ interface JSONEditorContext {
 }
 interface TreeModeContext extends JSONEditorContext {
     getJson: () => unknown | undefined;
-    getDocumentState: () => DocumentState;
-    findElement: (path: JSONPath) => Element | null;
+    getDocumentState: () => DocumentState | undefined;
+    getSelection: () => JSONSelection | undefined;
+    findElement: (path: JSONPath) => Element | undefined;
     onInsert: (type: InsertType) => void;
     onExpand: (path: JSONPath, expanded: boolean, recursive?: boolean) => void;
     onExpandSection: (path: JSONPath, section: Section) => void;
@@ -421,13 +572,15 @@ interface TreeModeContext extends JSONEditorContext {
     onDrag: (event: MouseEvent) => void;
     onDragEnd: () => void;
 }
-interface RenderValueProps {
+interface RenderValueProps extends Record<string, unknown> {
     path: JSONPath;
     value: unknown;
+    mode: Mode;
+    truncateTextSize: number;
     readOnly: boolean;
     enforceString: boolean;
-    selection: JSONSelection | null;
-    searchResultItems: SearchResultItem[] | undefined;
+    selection: JSONSelection | undefined;
+    searchResultItems: ExtendedSearchResultItem[] | undefined;
     isEditing: boolean;
     parser: JSONParser;
     normalization: ValueNormalization;
@@ -439,29 +592,6 @@ interface RenderValueProps {
     focus: () => void;
 }
 type RenderValuePropsOptional = Partial<RenderValueProps>;
-interface JSONNodeProp {
-    key: string;
-    value: unknown;
-    path: JSONPath;
-    expandedMap: JSONPointerMap<boolean> | undefined;
-    enforceStringMap: JSONPointerMap<boolean> | undefined;
-    visibleSectionsMap: JSONPointerMap<VisibleSection[]> | undefined;
-    validationErrorsMap: JSONPointerMap<NestedValidationError> | undefined;
-    keySearchResultItemsMap: ExtendedSearchResultItem[] | undefined;
-    valueSearchResultItemsMap: JSONPointerMap<ExtendedSearchResultItem[]> | undefined;
-    selection: JSONSelection | null;
-}
-interface JSONNodeItem {
-    index: number;
-    value: unknown;
-    path: JSONPath;
-    expandedMap: JSONPointerMap<boolean> | undefined;
-    enforceStringMap: JSONPointerMap<boolean> | undefined;
-    visibleSectionsMap: JSONPointerMap<VisibleSection[]> | undefined;
-    validationErrorsMap: JSONPointerMap<NestedValidationError> | undefined;
-    searchResultItemsMap: JSONPointerMap<ExtendedSearchResultItem[]> | undefined;
-    selection: JSONSelection | null;
-}
 interface DraggingState {
     initialTarget: Element;
     initialClientY: number;
@@ -474,8 +604,8 @@ interface DraggingState {
 }
 type RenderValueComponentDescription = SvelteComponentRenderer | SvelteActionRenderer;
 interface SvelteComponentRenderer {
-    component: typeof SvelteComponent<RenderValuePropsOptional>;
-    props: Record<string, unknown>;
+    component: typeof SvelteComponent<RenderValuePropsOptional> | Component<RenderValueProps>;
+    props: RenderValueProps;
 }
 interface SvelteActionRenderer {
     action: Action<HTMLElement, Record<string, unknown>>;
@@ -493,8 +623,30 @@ interface TransformModalOptions {
 }
 interface TransformModalCallback {
     id: string;
-    rootPath: JSONPath;
     json: unknown;
+    rootPath: JSONPath;
+    onTransform: (operations: JSONPatchDocument) => void;
+    onClose: () => void;
+}
+interface TransformModalProps extends TransformModalCallback {
+    id: string;
+    json: unknown;
+    rootPath: JSONPath;
+    indentation: number | string;
+    truncateTextSize: number;
+    escapeControlCharacters: boolean;
+    escapeUnicodeCharacters: boolean;
+    parser: JSONParser;
+    parseMemoizeOne: JSONParser['parse'];
+    validationParser: JSONParser;
+    pathParser: JSONPathParser;
+    queryLanguages: QueryLanguage[];
+    queryLanguageId: string;
+    onChangeQueryLanguage: OnChangeQueryLanguage;
+    onRenderValue: OnRenderValue;
+    onRenderMenu: OnRenderMenuInternal;
+    onRenderContextMenu: OnRenderContextMenuInternal;
+    onClassName: OnClassName;
     onTransform: (operations: JSONPatchDocument) => void;
     onClose: () => void;
 }
@@ -503,6 +655,13 @@ interface SortModalCallback {
     json: unknown;
     rootPath: JSONPath;
     onSort: OnSort;
+    onClose: () => void;
+}
+interface JSONRepairModalProps {
+    text: string;
+    onParse: (text: string) => void;
+    onRepair: (text: string) => string;
+    onApply: (repairedText: string) => void;
     onClose: () => void;
 }
 interface JSONEditorModalCallback {
@@ -532,241 +691,321 @@ type JSONSchema = Record<string, unknown>;
 type JSONSchemaDefinitions = Record<string, JSONSchema>;
 type JSONSchemaEnum = Array<unknown>;
 
-declare const __propDef$6: {
-    props: {
-        content?: Content | undefined;
-        selection?: JSONEditorSelection | null | undefined;
-        readOnly?: boolean | undefined;
-        indentation?: string | number | undefined;
-        tabSize?: number | undefined;
-        mode?: Mode | undefined;
-        mainMenuBar?: boolean | undefined;
-        navigationBar?: boolean | undefined;
-        statusBar?: boolean | undefined;
-        askToFormat?: boolean | undefined;
-        escapeControlCharacters?: boolean | undefined;
-        escapeUnicodeCharacters?: boolean | undefined;
-        flattenColumns?: boolean | undefined;
-        parser?: JSONParser | undefined;
-        validator?: Validator | null | undefined;
-        validationParser?: JSONParser | undefined;
-        pathParser?: JSONPathParser | undefined;
-        queryLanguages?: QueryLanguage[] | undefined;
-        queryLanguageId?: string | undefined;
-        onChangeQueryLanguage?: OnChangeQueryLanguage | undefined;
-        onChange?: OnChange | undefined;
-        onSelect?: OnSelect | null | undefined;
-        onRenderValue?: OnRenderValue | undefined;
-        onClassName?: OnClassName | undefined;
-        onRenderMenu?: OnRenderMenu | undefined;
-        onRenderContextMenu?: OnRenderContextMenu | undefined;
-        onChangeMode?: OnChangeMode | undefined;
-        onError?: OnError | undefined;
-        onFocus?: OnFocus | undefined;
-        onBlur?: OnBlur | undefined;
-        get?: (() => Content) | undefined;
-        set?: ((newContent: Content) => Promise<void>) | undefined;
-        update?: ((updatedContent: Content) => Promise<void>) | undefined;
-        patch?: ((operations: JSONPatchDocument) => Promise<JSONPatchResult>) | undefined;
-        select?: ((newSelection: JSONEditorSelection | null) => Promise<void>) | undefined;
-        expand?: ((callback?: OnExpand) => Promise<void>) | undefined;
-        transform?: ((options: TransformModalOptions) => void) | undefined;
-        validate?: (() => ContentErrors | null) | undefined;
-        acceptAutoRepair?: (() => Promise<Content>) | undefined;
-        scrollTo?: ((path: JSONPath) => Promise<void>) | undefined;
-        findElement?: ((path: JSONPath) => Element | null) | undefined;
-        focus?: (() => Promise<void>) | undefined;
-        refresh?: (() => Promise<void>) | undefined;
-        updateProps?: ((props: JSONEditorPropsOptional) => Promise<void>) | undefined;
-        destroy?: (() => Promise<void>) | undefined;
+interface $$__sveltets_2_IsomorphicComponent$5<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
+    new (options: svelte.ComponentConstructorOptions<Props>): svelte.SvelteComponent<Props, Events, Slots> & {
+        $$bindings?: Bindings;
+    } & Exports;
+    (internal: unknown, props: Props & {
+        $$events?: Events;
+        $$slots?: Slots;
+    }): Exports & {
+        $set?: any;
+        $on?: any;
     };
-    events: {
-        [evt: string]: CustomEvent<any>;
-    };
-    slots: {};
-};
-type JsonEditorProps = typeof __propDef$6.props;
-type JsonEditorEvents = typeof __propDef$6.events;
-type JsonEditorSlots = typeof __propDef$6.slots;
-declare class JsonEditor extends SvelteComponent<JsonEditorProps, JsonEditorEvents, JsonEditorSlots> {
-    get get(): () => Content;
-    get set(): (newContent: Content) => Promise<void>;
-    get update(): (updatedContent: Content) => Promise<void>;
-    get patch(): (operations: JSONPatchDocument) => Promise<JSONPatchResult>;
-    get select(): (newSelection: JSONEditorSelection | null) => Promise<void>;
-    get expand(): (callback?: OnExpand | undefined) => Promise<void>;
-    get transform(): (options: TransformModalOptions) => void;
-    get validate(): () => ContentErrors | null;
-    get acceptAutoRepair(): () => Promise<Content>;
-    get scrollTo(): (path: JSONPath) => Promise<void>;
-    get findElement(): (path: JSONPath) => Element | null;
-    get focus(): () => Promise<void>;
-    get refresh(): () => Promise<void>;
-    get updateProps(): (props: JSONEditorPropsOptional) => Promise<void>;
-    get destroy(): () => Promise<void>;
+    z_$$bindings?: Bindings;
 }
+declare const JSONEditor$1: $$__sveltets_2_IsomorphicComponent$5<{
+    content?: Content;
+    selection?: JSONEditorSelection | undefined;
+    readOnly?: boolean;
+    indentation?: number | string;
+    tabSize?: number;
+    truncateTextSize?: number;
+    mode?: Mode;
+    mainMenuBar?: boolean;
+    navigationBar?: boolean;
+    statusBar?: boolean;
+    askToFormat?: boolean;
+    escapeControlCharacters?: boolean;
+    escapeUnicodeCharacters?: boolean;
+    maxDocumentSizeTextMode?: number;
+    flattenColumns?: boolean;
+    parser?: JSONParser;
+    validator?: Validator | undefined;
+    validationParser?: JSONParser;
+    pathParser?: JSONPathParser;
+    queryLanguages?: QueryLanguage[];
+    queryLanguageId?: string;
+    onChangeQueryLanguage?: OnChangeQueryLanguage;
+    onChange?: OnChange | undefined;
+    onSelect?: OnSelect | undefined;
+    onRenderValue?: OnRenderValue;
+    onClassName?: OnClassName;
+    onRenderMenu?: OnRenderMenu;
+    onRenderContextMenu?: OnRenderContextMenu;
+    onChangeMode?: OnChangeMode;
+    onError?: OnError;
+    onFocus?: OnFocus;
+    onBlur?: OnBlur;
+    get?: () => Content;
+    set?: (newContent: Content) => void;
+    update?: (updatedContent: Content) => void;
+    patch?: (operations: JSONPatchDocument) => JSONPatchResult;
+    select?: (newSelection: JSONEditorSelection | undefined) => void;
+    expand?: (path: JSONPath, callback?: OnExpand) => void;
+    collapse?: (path: JSONPath, recursive?: boolean) => void;
+    transform?: (options?: TransformModalOptions) => void;
+    validate?: () => ContentErrors | undefined;
+    acceptAutoRepair?: () => Content;
+    scrollTo?: (path: JSONPath) => Promise<void>;
+    findElement?: (path: JSONPath) => Element | undefined;
+    focus?: () => void;
+    refresh?: () => Promise<void>;
+    updateProps?: (props: JSONEditorPropsOptional) => void;
+    destroy?: () => Promise<void>;
+}, {
+    [evt: string]: CustomEvent<any>;
+}, {}, {
+    get: () => Content;
+    set: (newContent: Content) => void;
+    update: (updatedContent: Content) => void;
+    patch: (operations: JSONPatchDocument) => JSONPatchResult;
+    select: (newSelection: JSONEditorSelection | undefined) => void;
+    expand: (path: JSONPath, callback?: OnExpand) => void;
+    collapse: (path: JSONPath, recursive?: boolean) => void;
+    transform: (options?: TransformModalOptions) => void;
+    validate: () => ContentErrors | undefined;
+    acceptAutoRepair: () => Content;
+    scrollTo: (path: JSONPath) => Promise<void>;
+    findElement: (path: JSONPath) => Element | undefined;
+    focus: () => void;
+    refresh: () => Promise<void>;
+    updateProps: (props: JSONEditorPropsOptional) => void;
+    destroy: () => Promise<void>;
+}, string>;
+type JSONEditor$1 = InstanceType<typeof JSONEditor$1>;
 
-declare const __propDef$5: {
-    props: {
-        path: JSONPath;
+interface $$__sveltets_2_IsomorphicComponent$4<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
+    new (options: svelte.ComponentConstructorOptions<Props>): svelte.SvelteComponent<Props, Events, Slots> & {
+        $$bindings?: Bindings;
+    } & Exports;
+    (internal: unknown, props: Props & {
+        $$events?: Events;
+        $$slots?: Slots;
+    }): Exports & {
+        $set?: any;
+        $on?: any;
+    };
+    z_$$bindings?: Bindings;
+}
+declare const BooleanToggle: $$__sveltets_2_IsomorphicComponent$4<{
+    path: JSONPath;
+    value: unknown;
+    readOnly: boolean;
+    onPatch: OnPatch;
+    focus: () => void;
+}, {
+    [evt: string]: CustomEvent<any>;
+}, {}, {}, string>;
+type BooleanToggle = InstanceType<typeof BooleanToggle>;
+
+interface $$__sveltets_2_IsomorphicComponent$3<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
+    new (options: svelte.ComponentConstructorOptions<Props>): svelte.SvelteComponent<Props, Events, Slots> & {
+        $$bindings?: Bindings;
+    } & Exports;
+    (internal: unknown, props: Props & {
+        $$events?: Events;
+        $$slots?: Slots;
+    }): Exports & {
+        $set?: any;
+        $on?: any;
+    };
+    z_$$bindings?: Bindings;
+}
+declare const ColorPicker: $$__sveltets_2_IsomorphicComponent$3<{
+    path: JSONPath;
+    value: string;
+    readOnly: boolean;
+    onPatch: OnPatch;
+    focus: () => void;
+}, {
+    [evt: string]: CustomEvent<any>;
+}, {}, {}, string>;
+type ColorPicker = InstanceType<typeof ColorPicker>;
+
+interface $$__sveltets_2_IsomorphicComponent$2<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
+    new (options: svelte.ComponentConstructorOptions<Props>): svelte.SvelteComponent<Props, Events, Slots> & {
+        $$bindings?: Bindings;
+    } & Exports;
+    (internal: unknown, props: Props & {
+        $$events?: Events;
+        $$slots?: Slots;
+    }): Exports & {
+        $set?: any;
+        $on?: any;
+    };
+    z_$$bindings?: Bindings;
+}
+declare const EditableValue: $$__sveltets_2_IsomorphicComponent$2<{
+    path: JSONPath;
+    value: unknown;
+    selection: JSONSelection | undefined;
+    mode: Mode;
+    parser: JSONParser;
+    normalization: ValueNormalization;
+    enforceString: boolean;
+    onPatch: OnPatch;
+    onPasteJson: OnPasteJson;
+    onSelect: OnJSONSelect;
+    onFind: OnFind;
+    focus: () => void;
+    findNextInside: FindNextInside;
+}, {
+    [evt: string]: CustomEvent<any>;
+}, {}, {}, string>;
+type EditableValue = InstanceType<typeof EditableValue>;
+
+interface $$__sveltets_2_IsomorphicComponent$1<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
+    new (options: svelte.ComponentConstructorOptions<Props>): svelte.SvelteComponent<Props, Events, Slots> & {
+        $$bindings?: Bindings;
+    } & Exports;
+    (internal: unknown, props: Props & {
+        $$events?: Events;
+        $$slots?: Slots;
+    }): Exports & {
+        $set?: any;
+        $on?: any;
+    };
+    z_$$bindings?: Bindings;
+}
+declare const EnumValue: $$__sveltets_2_IsomorphicComponent$1<{
+    path: JSONPath;
+    value: unknown;
+    mode: Mode;
+    parser: JSONParser;
+    readOnly: boolean;
+    selection: JSONSelection | undefined;
+    onPatch: OnPatch;
+    options: Array<{
         value: unknown;
-        readOnly: boolean;
-        onPatch: OnPatch;
-        focus: () => void;
-    };
-    events: {
-        [evt: string]: CustomEvent<any>;
-    };
-    slots: {};
-};
-type BooleanToggleProps = typeof __propDef$5.props;
-type BooleanToggleEvents = typeof __propDef$5.events;
-type BooleanToggleSlots = typeof __propDef$5.slots;
-declare class BooleanToggle extends SvelteComponent<BooleanToggleProps, BooleanToggleEvents, BooleanToggleSlots> {
-}
+        text: string;
+    }>;
+}, {
+    [evt: string]: CustomEvent<any>;
+}, {}, {}, string>;
+type EnumValue = InstanceType<typeof EnumValue>;
 
-declare const __propDef$4: {
-    props: {
-        path: JSONPath;
-        value: string;
-        readOnly: boolean;
-        onPatch: OnPatch;
-        focus: () => void;
-    };
-    events: {
-        [evt: string]: CustomEvent<any>;
-    };
-    slots: {};
-};
-type ColorPickerProps = typeof __propDef$4.props;
-type ColorPickerEvents = typeof __propDef$4.events;
-type ColorPickerSlots = typeof __propDef$4.slots;
-declare class ColorPicker extends SvelteComponent<ColorPickerProps, ColorPickerEvents, ColorPickerSlots> {
-}
+declare const ReadonlyValue: svelte.Component<RenderValueProps, {}, "">;
+type ReadonlyValue = ReturnType<typeof ReadonlyValue>;
 
-declare const __propDef$3: {
-    props: {
-        path: JSONPath;
-        value: unknown;
-        parser: JSONParser;
-        normalization: ValueNormalization;
-        enforceString: boolean;
-        onPatch: OnPatch;
-        onPasteJson: OnPasteJson;
-        onSelect: OnJSONSelect;
-        onFind: OnFind;
-        focus: () => void;
-        findNextInside: FindNextInside;
+interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
+    new (options: svelte.ComponentConstructorOptions<Props>): svelte.SvelteComponent<Props, Events, Slots> & {
+        $$bindings?: Bindings;
+    } & Exports;
+    (internal: unknown, props: Props & {
+        $$events?: Events;
+        $$slots?: Slots;
+    }): Exports & {
+        $set?: any;
+        $on?: any;
     };
-    events: {
-        [evt: string]: CustomEvent<any>;
-    };
-    slots: {};
-};
-type EditableValueProps = typeof __propDef$3.props;
-type EditableValueEvents = typeof __propDef$3.events;
-type EditableValueSlots = typeof __propDef$3.slots;
-declare class EditableValue extends SvelteComponent<EditableValueProps, EditableValueEvents, EditableValueSlots> {
+    z_$$bindings?: Bindings;
 }
+declare const TimestampTag: $$__sveltets_2_IsomorphicComponent<{
+    value: number;
+}, {
+    [evt: string]: CustomEvent<any>;
+}, {}, {}, string>;
+type TimestampTag = InstanceType<typeof TimestampTag>;
 
-declare const __propDef$2: {
-    props: {
-        path: JSONPath;
-        value: unknown;
-        parser: JSONParser;
-        readOnly: boolean;
-        selection: JSONSelection | null;
-        onPatch: OnPatch;
-        options: Array<{
-            value: unknown;
-            text: string;
-        }>;
-    };
-    events: {
-        [evt: string]: CustomEvent<any>;
-    };
-    slots: {};
-};
-type EnumValueProps = typeof __propDef$2.props;
-type EnumValueEvents = typeof __propDef$2.events;
-type EnumValueSlots = typeof __propDef$2.slots;
-declare class EnumValue extends SvelteComponent<EnumValueProps, EnumValueEvents, EnumValueSlots> {
-}
-
-declare const __propDef$1: {
-    props: {
-        path: JSONPath;
-        value: unknown;
-        readOnly: boolean;
-        normalization: ValueNormalization;
-        parser: JSONParser;
-        onSelect: OnJSONSelect;
-        searchResultItems: ExtendedSearchResultItem[] | undefined;
-    };
-    events: {
-        [evt: string]: CustomEvent<any>;
-    };
-    slots: {};
-};
-type ReadonlyValueProps = typeof __propDef$1.props;
-type ReadonlyValueEvents = typeof __propDef$1.events;
-type ReadonlyValueSlots = typeof __propDef$1.slots;
-declare class ReadonlyValue extends SvelteComponent<ReadonlyValueProps, ReadonlyValueEvents, ReadonlyValueSlots> {
-}
-
-declare const __propDef: {
-    props: {
-        value: number;
-    };
-    events: {
-        [evt: string]: CustomEvent<any>;
-    };
-    slots: {};
-};
-type TimestampTagProps = typeof __propDef.props;
-type TimestampTagEvents = typeof __propDef.events;
-type TimestampTagSlots = typeof __propDef.slots;
-declare class TimestampTag extends SvelteComponent<TimestampTagProps, TimestampTagEvents, TimestampTagSlots> {
-}
-
-declare function renderValue({ path, value, readOnly, enforceString, searchResultItems, isEditing, parser, normalization, onPatch, onPasteJson, onSelect, onFind, findNextInside, focus }: RenderValueProps): RenderValueComponentDescription[];
+declare function renderValue(props: RenderValueProps): RenderValueComponentDescription[];
 
 /**
  * Search the JSON schema for enums defined at given props.path. If found,
  * return an EnumValue renderer. If not found, return null. In that case you
  * have to fallback on the default valueRender function
  */
-declare function renderJSONSchemaEnum(props: RenderValueProps, schema: JSONSchema, schemaDefinitions?: JSONSchemaDefinitions): RenderValueComponentDescription[] | null;
+declare function renderJSONSchemaEnum(props: RenderValueProps, schema: JSONSchema, schemaDefinitions?: JSONSchemaDefinitions): RenderValueComponentDescription[] | undefined;
+
+declare function getValueClass(value: unknown, mode: Mode, parser: JSONParser): string;
+
+declare global {
+    interface Navigator {
+        userAgentData?: {
+            platform: string;
+        };
+    }
+}
+declare function isMacDevice(): boolean;
+
+interface KeyComboEvent {
+    ctrlKey: boolean;
+    metaKey: boolean;
+    altKey: boolean;
+    shiftKey: boolean;
+    key: string;
+}
+/**
+ * Get the active key combination from a keyboard event.
+ * For example returns "Ctrl+Shift+ArrowUp" or "Ctrl+A"
+ *
+ * Returns the same output on both Windows and Mac:
+ * meta keys "Ctrl" ("Command" on Mac), and "Alt" ("Alt" or "Option" on Mac)
+ * So pressing "Command" and "A"on Mac will return "Ctrl+A"
+ */
+declare function keyComboFromEvent(event: KeyComboEvent, separator?: string, isMac?: typeof isMacDevice): string;
 
 interface AjvValidatorOptions {
+    /**
+     * The JSON schema to validate (required).
+     */
     schema: JSONSchema;
+    /**
+     * An object containing JSON Schema definitions which can be referenced using $ref.
+     */
     schemaDefinitions?: JSONSchemaDefinitions;
+    /**
+     * Optional extra options for Ajv.
+     */
     ajvOptions?: Options;
+    /**
+     * An optional callback function allowing to apply additional configuration on the provided Ajv instance, or return
+     * your own Ajv instance and ignore the provided one.
+     */
     onCreateAjv?: (ajv: Ajv) => Ajv | void;
+    /**
+     * The severity of the validation error.
+     *
+     * @default ValidationSeverity.warning
+     */
+    errorSeverity?: ValidationSeverity;
 }
 /**
  * Create a JSON Schema validator powered by Ajv.
- * @param options
- * @property schema
- *                    The JSON schema to validate (required).
- * @property [schemaDefinitions=undefined]
- *                    An object containing JSON Schema definitions
- *                    which can be referenced using $ref
- * @property [ajvOptions=undefined]
- *                    Optional extra options for Ajv
- * @property [onCreateAjv=undefined]
- *                    An optional callback function allowing to apply additional
- *                    configuration on the provided Ajv instance, or return
- *                    your own Ajv instance and ignore the provided one.
- * @return Returns a validation function
  */
 declare function createAjvValidator(options: AjvValidatorOptions): Validator;
+/**
+ * Create a JSON Schema validator powered by Ajv.
+ *
+ * Same as `createAjvValidator`, but allows for remote schema resolution through `ajvOptions`'s `loadSchema(uri)`
+ * function.
+ *
+ * Note that `ajvOptions.loadSchema` *must* be set, or Ajv throws an error on initialization!
+ *
+ * ### Example
+ *
+ *     const validate = await createAjvValidatorAsync({
+ *       schema: {
+ *         $ref: '/schema.json'
+ *       },
+ *       ajvOptions: {
+ *         loadSchema(uri) {
+ *           return fetch(uri).then((res) => res.json())
+ *         }
+ *       }
+ *     })
+ */
+declare function createAjvValidatorAsync(options: AjvValidatorOptions): Promise<Validator>;
+
+declare const jsonQueryLanguage: QueryLanguage;
+
+declare const jmespathQueryLanguage: QueryLanguage;
+
+declare const jsonpathQueryLanguage: QueryLanguage;
 
 declare const lodashQueryLanguage: QueryLanguage;
 
 declare const javascriptQueryLanguage: QueryLanguage;
-
-declare const jmespathQueryLanguage: QueryLanguage;
 
 /**
  * Check whether a value is Content (TextContent or JSONContent)
@@ -785,7 +1024,7 @@ declare function isJSONContent(content: unknown): content is JSONContent;
  */
 declare function toTextContent(content: Content, indentation?: number | string | undefined, parser?: JSONParser): TextContent;
 /**
- * Convert Content into TextContent if it is JSONContent, else leave it as is
+ * Convert Content into JSONContent if it is TextContent, else leave it as is
  * @throws {SyntaxError} Will throw a parse error when the text contents does not contain valid JSON
  */
 declare function toJSONContent(content: Content, parser?: JSONParser): JSONContent;
@@ -811,17 +1050,39 @@ declare function estimateSerializedSize(content: Content, maxSize?: number): num
  */
 declare function isEqualParser(a: JSONParser, b: JSONParser): boolean;
 
-declare function isAfterSelection(selection: JSONEditorSelection | null): selection is AfterSelection;
-declare function isInsideSelection(selection: JSONEditorSelection | null): selection is InsideSelection;
-declare function isKeySelection(selection: JSONEditorSelection | null): selection is KeySelection;
-declare function isValueSelection(selection: JSONEditorSelection | null): selection is ValueSelection;
-declare function isMultiSelection(selection: JSONEditorSelection | null): selection is MultiSelection;
-declare function createKeySelection(path: JSONPath, edit: boolean): KeySelection;
-declare function createValueSelection(path: JSONPath, edit: boolean): ValueSelection;
+/**
+ * Expand the root array or object, and in case of an array, expand the first array item
+ */
+declare function expandMinimal(relativePath: JSONPath): boolean;
+/**
+ * Expand the root array or object
+ */
+declare function expandSelf(relativePath: JSONPath): boolean;
+declare function expandAll(): boolean;
+declare function expandNone(): boolean;
+
+declare function isAfterSelection(selection: JSONEditorSelection | undefined): selection is AfterSelection;
+declare function isInsideSelection(selection: JSONEditorSelection | undefined): selection is InsideSelection;
+declare function isKeySelection(selection: JSONEditorSelection | undefined): selection is KeySelection;
+declare function isValueSelection(selection: JSONEditorSelection | undefined): selection is ValueSelection;
+declare function isMultiSelection(selection: JSONEditorSelection | undefined): selection is MultiSelection;
+/**
+ * Expand a selection start and end into an array containing all paths
+ * between (and including) start and end
+ */
+declare function getSelectionPaths(json: unknown, selection: JSONSelection): JSONPath[];
+declare function getStartPath(json: unknown, selection: JSONSelection): JSONPath;
+declare function getEndPath(json: unknown, selection: JSONSelection): JSONPath;
+declare function createKeySelection(path: JSONPath): KeySelection;
+declare function createEditKeySelection(path: JSONPath, initialValue?: string): EditKeySelection;
+declare function createValueSelection(path: JSONPath): ValueSelection;
+declare function createEditValueSelection(path: JSONPath, initialValue?: string): EditValueSelection;
 declare function createInsideSelection(path: JSONPath): InsideSelection;
 declare function createAfterSelection(path: JSONPath): AfterSelection;
 declare function createMultiSelection(anchorPath: JSONPath, focusPath: JSONPath): MultiSelection;
-declare function isEditingSelection(selection: JSONSelection | null): boolean;
+declare function isEditingSelection(selection: JSONSelection | undefined): selection is EditKeySelection | EditValueSelection;
+declare function getFocusPath(selection: JSONSelection): JSONPath;
+declare function getAnchorPath(selection: JSONSelection): JSONPath;
 
 /**
  **
@@ -852,15 +1113,46 @@ declare function resizeObserver(element: Element, onResize: (element: Element) =
 
 type Callback = () => void;
 /**
- * The provided callback is invoked when the user presses Escape,
- * but only the callback of the last registered component is invoked.
- *
- * This is useful for example when opening a model on top of another modal:
- * you only want the top modal to close on Escape, and not the second modal.
+ * The provided callback is invoked when the user presses Escape, and then stops propagation of the event.
  */
-declare function onEscape(element: Element | null, callback: Callback): {
-    destroy: () => void;
-};
+declare function onEscape(element: HTMLElement | undefined, callback: Callback): {
+    destroy(): void;
+} | undefined;
+
+/**
+ * Test whether a value is an Object (and not an Array or Class)
+ */
+declare function isObject(value: unknown): value is Record<string, unknown>;
+/**
+ * Test whether a value is an Object or an Array (and not a Class)
+ */
+declare function isObjectOrArray(value: unknown): value is object | Array<unknown>;
+/**
+ * Test whether a value is a boolean
+ *
+ * @param {*} value
+ * @return {boolean}
+ */
+declare function isBoolean(value: unknown): value is boolean;
+/**
+ * Test whether a value is a timestamp in milliseconds after the year 2000.
+ */
+declare function isTimestamp(value: unknown): boolean;
+/**
+ * Test if a string contains a valid color name or code.
+ * Returns true if a valid color, false otherwise
+ */
+declare function isColor(value: unknown): boolean;
+/**
+ * Get the type of the value
+ */
+declare function valueType(value: unknown, parser: JSONParser): string;
+declare function isUrl(text: unknown): boolean;
+/**
+ * Convert contents of a string to the correct JSON type. This can be a string,
+ * a number, a boolean, etc
+ */
+declare function stringConvert(str: string, parser: JSONParser): unknown;
 
 declare function isMenuSpace(item: unknown): item is MenuSpace;
 declare function isMenuSeparator(item: unknown): item is MenuSeparator;
@@ -875,5 +1167,95 @@ declare function isValidationError(value: unknown): value is ValidationError;
 declare function isNestedValidationError(value: unknown): value is NestedValidationError;
 declare function isSvelteComponentRenderer(value: unknown): value is SvelteComponentRenderer;
 declare function isSvelteActionRenderer(value: unknown): value is SvelteActionRenderer;
+declare function isObjectRecursiveState(state: RecursiveState | undefined): state is ObjectRecursiveState;
+declare function isArrayRecursiveState(state: RecursiveState | undefined): state is ArrayRecursiveState;
+declare function isValueRecursiveState(state: RecursiveState | undefined): state is ValueRecursiveState;
+declare function isExpandableState(state: RecursiveState | undefined): state is ObjectRecursiveState | ArrayRecursiveState;
+declare function hasSearchResults(state: SearchResults | undefined): state is WithSearchResults;
+declare function isTreeHistoryItem(historyItem: HistoryItem | undefined): historyItem is TreeHistoryItem;
+declare function isTextHistoryItem(historyItem: HistoryItem | undefined): historyItem is TextHistoryItem;
+declare function isModeHistoryItem(historyItem: HistoryItem | undefined): historyItem is ModeHistoryItem;
 
-export { type AbsolutePopupContext, type AbsolutePopupOptions, type AfterPatchCallback, type AfterSelection, type AjvValidatorOptions, BooleanToggle, type CaretPosition, CaretType, type ClipboardValues, ColorPicker, type Content, type ContentErrors, type ContentParseError, type ContentValidationErrors, type ContextMenuColumn, type ContextMenuItem, type ContextMenuRow, type ConvertType, type DocumentState, type DragInsideAction, type DragInsideProps, type DraggingState, EditableValue, EnumValue, type EscapeValue, type ExtendedSearchResultItem, type FindNextInside, type HistoryItem, type InsertType, type InsideSelection, type JSONContent, JsonEditor as JSONEditor, type JSONEditorContext, type JSONEditorModalCallback, type JSONEditorPropsOptional, type JSONEditorSelection, type JSONNodeItem, type JSONNodeProp, type JSONParser, type JSONPatchResult, type JSONPathParser, type JSONPointerMap, type JSONSchema, type JSONSchemaDefinitions, type JSONSchemaEnum, type JSONSelection, type KeySelection, type MenuButton, type MenuDropDownButton, type MenuItem, type MenuLabel, type MenuSeparator, type MenuSpace, type MessageAction, Mode, type MultiSelection, type NestedValidationError, type NumberOption, type OnBlur, type OnChange, type OnChangeMode, type OnChangeQueryLanguage, type OnChangeStatus, type OnChangeText, type OnClassName, type OnContextMenu, type OnError, type OnExpand, type OnFind, type OnFocus, type OnJSONEditorModal, type OnJSONSelect, type OnPaste, type OnPasteJson, type OnPatch, type OnRenderContextMenu, type OnRenderContextMenuInternal, type OnRenderMenu, type OnRenderMenuInternal, type OnRenderValue, type OnSelect, type OnSort, type OnSortModal, type OnTransformModal, type ParseError, type PastedJson, type PathOption, type PopupEntry, type QueryLanguage, type QueryLanguageOptions, ReadonlyValue, type RenderContextMenuContext, type RenderMenuContext, type RenderValueComponentDescription, type RenderValueProps, type RenderValuePropsOptional, type RenderedItem, type RichValidationError, SearchField, type SearchOptions, type SearchResult, type SearchResultItem, type Section, SelectionType, SortDirection, type SortModalCallback, type SortedColumn, type SvelteActionRenderer, type SvelteComponentRenderer, type TableCellIndex, type TextContent, type TextLocation, type TextSelection, TimestampTag, type TransformModalCallback, type TransformModalOptions, type TreeModeContext, type UnescapeValue, UpdateSelectionAfterChange, type ValidationError, ValidationSeverity, type Validator, type ValueNormalization, type ValueSelection, type VisibleSection, createAfterSelection, createAjvValidator, createInsideSelection, createKeySelection, createMultiSelection, createValueSelection, estimateSerializedSize, isAfterSelection, isContent, isContentParseError, isContentValidationErrors, isContextMenuColumn, isContextMenuRow, isEditingSelection, isEqualParser, isInsideSelection, isJSONContent, isKeySelection, isLargeContent, isMenuButton, isMenuDropDownButton, isMenuLabel, isMenuSeparator, isMenuSpace, isMultiSelection, isNestedValidationError, isSvelteActionRenderer, isSvelteComponentRenderer, isTextContent, isValidationError, isValueSelection, javascriptQueryLanguage, jmespathQueryLanguage, lodashQueryLanguage, onEscape, parseJSONPath, renderJSONSchemaEnum, renderValue, resizeObserver, stringifyJSONPath, toJSONContent, toTextContent };
+interface CreateJSONEditorProps {
+    target: HTMLDivElement;
+    props: JSONEditorPropsOptional;
+}
+
+declare function createJSONEditor({ target, props }: Parameters<typeof mount>[1]): JSONEditor$1;
+/**
+ * @deprecated The constructor "new JSONEditor(...)" is deprecated. Please use "createJSONEditor(...)" instead.
+ */
+declare function JSONEditor({ target, props }: CreateJSONEditorProps): svelte.SvelteComponent<{
+    content?: Content;
+    selection?: JSONEditorSelection | undefined;
+    readOnly?: boolean;
+    indentation?: number | string;
+    tabSize?: number;
+    truncateTextSize?: number;
+    mode?: Mode;
+    mainMenuBar?: boolean;
+    navigationBar?: boolean;
+    statusBar?: boolean;
+    askToFormat?: boolean;
+    escapeControlCharacters?: boolean;
+    escapeUnicodeCharacters?: boolean;
+    maxDocumentSizeTextMode?: number;
+    flattenColumns?: boolean;
+    parser?: JSONParser;
+    validator?: Validator | undefined;
+    validationParser?: JSONParser;
+    pathParser?: JSONPathParser;
+    queryLanguages?: QueryLanguage[];
+    queryLanguageId?: string;
+    onChangeQueryLanguage?: OnChangeQueryLanguage;
+    onChange?: OnChange | undefined;
+    onSelect?: OnSelect | undefined;
+    onRenderValue?: OnRenderValue;
+    onClassName?: OnClassName;
+    onRenderMenu?: OnRenderMenu;
+    onRenderContextMenu?: OnRenderContextMenu;
+    onChangeMode?: OnChangeMode;
+    onError?: OnError;
+    onFocus?: OnFocus;
+    onBlur?: OnBlur;
+    get?: () => Content;
+    set?: (newContent: Content) => void;
+    update?: (updatedContent: Content) => void;
+    patch?: (operations: immutable_json_patch.JSONPatchDocument) => JSONPatchResult;
+    select?: (newSelection: JSONEditorSelection | undefined) => void;
+    expand?: (path: immutable_json_patch.JSONPath, callback?: OnExpand) => void;
+    collapse?: (path: immutable_json_patch.JSONPath, recursive?: boolean) => void;
+    transform?: (options?: TransformModalOptions) => void;
+    validate?: () => ContentErrors | undefined;
+    acceptAutoRepair?: () => Content;
+    scrollTo?: (path: immutable_json_patch.JSONPath) => Promise<void>;
+    findElement?: (path: immutable_json_patch.JSONPath) => Element | undefined;
+    focus?: () => void;
+    refresh?: () => Promise<void>;
+    updateProps?: (props: JSONEditorPropsOptional) => void;
+    destroy?: () => Promise<void>;
+}, {
+    [evt: string]: CustomEvent<any>;
+}, {}> & {
+    $$bindings?: string | undefined;
+} & {
+    get: () => Content;
+    set: (newContent: Content) => void;
+    update: (updatedContent: Content) => void;
+    patch: (operations: immutable_json_patch.JSONPatchDocument) => JSONPatchResult;
+    select: (newSelection: JSONEditorSelection | undefined) => void;
+    expand: (path: immutable_json_patch.JSONPath, callback?: OnExpand) => void;
+    collapse: (path: immutable_json_patch.JSONPath, recursive?: boolean) => void;
+    transform: (options?: TransformModalOptions) => void;
+    validate: () => ContentErrors | undefined;
+    acceptAutoRepair: () => Content;
+    scrollTo: (path: immutable_json_patch.JSONPath) => Promise<void>;
+    findElement: (path: immutable_json_patch.JSONPath) => Element | undefined;
+    focus: () => void;
+    refresh: () => Promise<void>;
+    updateProps: (props: JSONEditorPropsOptional) => void;
+    destroy: () => Promise<void>;
+};
+
+export { BooleanToggle, CaretType, ColorPicker, EditableValue, EnumValue, JSONEditor, JSONEditor$1 as JsonEditor, Mode, ReadonlyValue, SearchField, SelectionType, SortDirection, TimestampTag, UpdateSelectionAfterChange, ValidationSeverity, createAfterSelection, createAjvValidator, createAjvValidatorAsync, createEditKeySelection, createEditValueSelection, createInsideSelection, createJSONEditor, createKeySelection, createMultiSelection, createValueSelection, estimateSerializedSize, expandAll, expandMinimal, expandNone, expandSelf, getAnchorPath, getEndPath, getFocusPath, getSelectionPaths, getStartPath, getValueClass, hasSearchResults, isAfterSelection, isArrayRecursiveState, isBoolean, isColor, isContent, isContentParseError, isContentValidationErrors, isContextMenuColumn, isContextMenuRow, isEditingSelection, isEqualParser, isExpandableState, isInsideSelection, isJSONContent, isKeySelection, isLargeContent, isMenuButton, isMenuDropDownButton, isMenuLabel, isMenuSeparator, isMenuSpace, isModeHistoryItem, isMultiSelection, isNestedValidationError, isObject, isObjectOrArray, isObjectRecursiveState, isSvelteActionRenderer, isSvelteComponentRenderer, isTextContent, isTextHistoryItem, isTimestamp, isTreeHistoryItem, isUrl, isValidationError, isValueRecursiveState, isValueSelection, javascriptQueryLanguage, jmespathQueryLanguage, jsonQueryLanguage, jsonpathQueryLanguage, keyComboFromEvent, lodashQueryLanguage, onEscape, parseJSONPath, renderJSONSchemaEnum, renderValue, resizeObserver, stringConvert, stringifyJSONPath, toJSONContent, toTextContent, valueType };
+export type { AbsolutePopupContext, AbsolutePopupOptions, AfterPatchCallback, AfterSelection, AjvValidatorOptions, ArrayDocumentState, ArrayRecursiveState, ArraySearchResults, ArrayValidationErrors, CaretPosition, ClipboardValues, Content, ContentErrors, ContentParseError, ContentValidationErrors, ContextMenuColumn, ContextMenuItem, ContextMenuRow, ConvertType, CreateJSONEditorProps, DocumentState, DragInsideAction, DragInsideProps, DraggingState, EditKeySelection, EditValueSelection, EscapeValue, ExtendedSearchResultItem, FindNextInside, History, HistoryInstance, HistoryItem, InsertType, InsideSelection, JSONContent, JSONEditorContext, JSONEditorModalCallback, JSONEditorModalProps, JSONEditorPropsOptional, JSONEditorSelection, JSONParser, JSONPatchResult, JSONPathParser, JSONRepairModalProps, JSONSchema, JSONSchemaDefinitions, JSONSchemaEnum, JSONSelection, KeySelection, MenuButton, MenuDropDownButton, MenuItem, MenuLabel, MenuSeparator, MenuSpace, MessageAction, ModeHistoryItem, MultiSelection, NestedValidationError, NumberOption, ObjectDocumentState, ObjectRecursiveState, ObjectSearchResults, ObjectValidationErrors, OnBlur, OnChange, OnChangeMode, OnChangeQueryLanguage, OnChangeStatus, OnChangeText, OnClassName, OnContextMenu, OnError, OnExpand, OnFind, OnFocus, OnJSONEditorModal, OnJSONSelect, OnPaste, OnPasteJson, OnPatch, OnRedo, OnRenderContextMenu, OnRenderContextMenuInternal, OnRenderMenu, OnRenderMenuInternal, OnRenderValue, OnSelect, OnSort, OnSortModal, OnTransformModal, OnUndo, ParseError, PastedJson, PathOption, PopupEntry, QueryLanguage, QueryLanguageOptions, RecursiveState, RecursiveStateFactory, RenderContextMenuContext, RenderMenuContext, RenderValueComponentDescription, RenderValueProps, RenderValuePropsOptional, RenderedItem, RichValidationError, ScrollToOptions, SearchOptions, SearchResultDetails, SearchResultItem, SearchResults, Section, SortModalCallback, SortedColumn, SvelteActionRenderer, SvelteComponentRenderer, TableCellIndex, TextChanges, TextContent, TextHistoryItem, TextLocation, TextSelection, TransformModalCallback, TransformModalOptions, TransformModalProps, TreeHistoryItem, TreeModeContext, UnescapeValue, ValidationError, ValidationErrors, Validator, ValueDocumentState, ValueNormalization, ValueRecursiveState, ValueSearchResults, ValueSelection, ValueValidationErrors, VisibleSection, WithSearchResults };
